@@ -163,11 +163,18 @@ Use **stub routers** until each slice is implemented; responses must match Pydan
 
 | Event | Owner | Action |
 |-------|--------|--------|
-| Patient adds med | Med core | Persist `PatientMedication`, then call world service to create `Tree` |
+| Patient adds med | Med core | Persist `PatientMedication`, then call `world_trees.create_tree_for_patient_medication(db, id)` |
 | Daily press | World | `POST .../daily-press` only; updates growth per §2.6 |
 | Carer list | Med core | `GET /carer/medications` — shape §2.1 only |
 
-Template for PR descriptions: `.github/pull_request_template.md`.
+### Local database
+
+```bash
+cd backend
+python -m uv run alembic upgrade head
+```
+
+Creates/updates SQLite `thriverx.db` (or DB from `DATABASE_URL`).
 
 ---
 
@@ -186,3 +193,4 @@ Template for PR descriptions: `.github/pull_request_template.md`.
 |------|--------|
 | 2026-07-23 | Initial agreed contract for MVP parallel build |
 | 2026-07-23 | Schema agreed; Git/PR workflow (§5); med core drives first DB PR |
+| 2026-07-24 | SQLAlchemy models + Alembic; tree hook on POST `/me/medications` |
