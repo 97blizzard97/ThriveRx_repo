@@ -1,0 +1,137 @@
+---
+description: ThriveRx project standards
+alwaysApply: true
+---
+
+# ThriveRx
+
+Cross-platform patient-companion app: search or scan a script → curated plain-language medicine info (EN / zh / vi), personal medicines list, reminders, and a **tree-growing world** for encouragement — not gamification. Portfolio demo, not clinical software.
+
+**Full product spec:** `ThriveRx_PRD.md` (MVP scope, tree mechanic, carer view, regulatory boundary, stretch features).
+
+## Stack
+
+- **Mobile:** React Native + TypeScript (Expo), **pnpm** for JS dependencies
+- **Backend:** Python + FastAPI (`uv`)
+- **Database:** Postgres in shared dev; SQLite acceptable for solo local backend work until schema is stable
+- **Auth:** Magic link (email only) on the backend
+- **Medicine content:** Fixed curated dataset (10–15 medicines for MVP), eventually TGA CMI — **not** live LLM-generated medical text
+
+## Architecture
+
+- `mobile/` — app (lookup UI, scan/camera, medicines list, reminders, world/tree UI, i18n)
+- `mobile/src/features/medications/` — med core (collaborator 1)
+- `mobile/src/features/world/` — trees / world (collaborator 2)
+- `mobile/src/features/shared/` — disclaimer, shell, shared UI
+- `backend/` — FastAPI app
+- **Contract (both collaborators):** `docs/SCHEMA_AND_API_CONTRACT.md` — schema, routes, boundaries
+- `backend/app/models/` — SQLAlchemy (or agreed ORM) models; **schema agreed before parallel feature work**
+- `backend/app/schemas/` — Pydantic request/response types (API contract)
+- `backend/app/services/` — business logic (lookup, list, OCR parse/match, auth, reminders, engagement/trees, carer pairing)
+- `backend/app/routers/` — thin HTTP routes
+- `backend/data/` or `backend/seeds/` — demo medicine JSON/SQL seeds (traceable source metadata per entry)
+- `backend/tests/` — pytest
+
+**Team split (MVP):** Person A — medication data core (lookup, scan, reminders, carer view). Person B — tree-growing (growth stages, world/planet view, daily engagement press). Person B builds against **stubbed/mock engagement events** until Person A wires the real daily-press API.
+
+## Commands
+
+Update paths after scaffold; keep these as the canonical dev entrypoints:
+
+- Mobile install: `cd mobile && pnpm install`
+- Mobile dev: `cd mobile && pnpm start` (Expo dev server)
+- Backend dev: `cd backend && uv run uvicorn app.main:app --reload`
+- Backend tests: `cd backend && uv run pytest`
+- Lint (Python): `cd backend && uv run ruff check .`
+
+## Critical rules
+
+- API keys and secrets in `.env` only, **never** in code or commits
+- **Do not** use an LLM to invent or rewrite medicine facts shown to users; serve stored, reviewed demo content
+- OCR/scan pipeline may call external vision/OCR APIs from the **backend only**; mobile talks to your API, not third-party keys directly
+- Magic-link and session/token logic **backend only**
+- Permanent **general-information disclaimer** in the mobile UI (not personal medical advice)
+- Collect minimal PII: email for magic link; pseudonymous user id; no name/DOB unless PRD changes
+- **Tree / world (product rules, not optional polish):**
+  - One tree per medication; growth tied to daily engagement press (once per day per med)
+  - Missed days **pause** growth-time only — never shrink, wilt, reset, or punish visually
+  - No streaks, points, badges, leaderboards, or numeric adherence scores anywhere
+  - Carer read-only view **must not** expose tree/world, daily press status, or dose history (PRD §7.4)
+- **MVP — do not add:** drug interaction checking, personalised dosing, “safe for you” recommendations, PBS API (stretch), deployment infra (unless explicitly requested)
+- **MVP — do add:** auth, DB, medicines list persistence, EN/zh/vi UI + content, reminders, full tree mechanic + world view, carer pairing/read-only med list
+- Build **medication core + scan end-to-end** in parallel with tree UI against stubs, then **wire real engagement** before calling MVP done
+- Translated demo content: flag as not medically reviewed where PRD requires (§7.5)
+
+## Workflow
+
+- Feature branches → PR into `main`; small, reviewable PRs
+- Commit after each working slice
+- Never commit `.env`, `node_modules/`, `.venv/`, build artifacts
+- Schema changes: discuss with both owners before merging
+
+## Coding conventions
+
+### Python (backend)
+
+**Tooling**
+
+- Use `uv` for dependencies: `uv add <package>`, `uv run <cmd>`
+- Do not use `pip` or a hand-maintained `requirements.txt` as the source of truth
+- Follow PEP 8, enforced by `ruff`
+- Type hints on all function signatures
+
+```python
+# Good
+def fuzzy_match_medicine(ocr_text: str, catalog: list[Medicine]) -> MatchResult:
+    ...
+```
+
+**DRY**
+
+- Shared logic between routes lives in `services/`, not copy-pasted in routers
+
+**Single responsibility**
+
+```python
+# Bad — does too much
+def scan_script_and_parse_and_save(raw_image): ...
+
+# Good — split
+def extract_text_from_image(image_bytes: bytes) -> str: ...
+def parse_script_lines(text: str) -> ParsedScript: ...
+def match_to_catalog(parsed: ParsedScript) -> list[MedicineMatch]: ...
+```
+
+**Unit tests**
+
+- pytest for each service function with real logic
+- Files under `backend/tests/test_*.py`
+- Happy path, at least one edge case, one error case
+
+```python
+def test_fuzzy_match_returns_empty_when_no_catalog_hit():
+    result = fuzzy_match_medicine("unknown drug xyz", [])
+    assert result.matches == []
+```
+
+### TypeScript (React Native mobile)
+
+**Style**
+
+- Functional components and hooks only
+- Type props with `interface`, not `type` (unless union/intersection needs require `type`)
+- Prefer a single styling approach chosen at scaffold (e.g. NativeWind/Tailwind-style utilities or StyleSheet); stay consistent
+
+**Structure**
+
+- One main component per file
+- Split files around ~100 lines when readability drops
+- No raw `fetch` scattered in screens — use `mobile/src/lib/api.ts` or hooks like `hooks/useMedicines.ts`
+
+**No `any`**
+
+- Prefer `unknown` and narrow; align types with backend Pydantic schemas / OpenAPI when available
+
+**i18n**
+
+- User-facing strings via i18n keys (EN / zh / vi); no hard-coded English-only copy in components
