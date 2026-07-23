@@ -9,6 +9,7 @@ dependencies = [
     "sqlalchemy>=2.0.36",
     "pydantic-settings>=2.6.0",
     "python-multipart>=0.0.12",
+    "alembic>=1.18.5",
 ]
 
 [dependency-groups]
@@ -24,6 +25,7 @@ package = false
 [tool.ruff]
 line-length = 88
 target-version = "py312"
+exclude = ["alembic/versions"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP"]

@@ -2,22 +2,22 @@
 # Docs: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
 
 # Shared — both review (schema, DB, contract)
-/docs/SCHEMA_AND_API_CONTRACT.md @REPLACE_MED_CORE @REPLACE_WORLD
-/backend/app/models/ @REPLACE_MED_CORE @REPLACE_WORLD
-/backend/alembic/ @REPLACE_MED_CORE @REPLACE_WORLD
+/docs/SCHEMA_AND_API_CONTRACT.md @97blizzard97 @blin046890
+/backend/app/models/ @97blizzard97 @blin046890
+/backend/alembic/ @97blizzard97 @blin046890
 
 # Med core
-/backend/app/routers/medicines.py @REPLACE_MED_CORE
-/backend/app/routers/scan.py @REPLACE_MED_CORE
-/backend/app/routers/reminders.py @REPLACE_MED_CORE
-/backend/app/routers/carer.py @REPLACE_MED_CORE
-/backend/app/services/medicines.py @REPLACE_MED_CORE
-/backend/app/services/scan.py @REPLACE_MED_CORE
-/backend/app/services/reminders.py @REPLACE_MED_CORE
-/backend/app/services/carer.py @REPLACE_MED_CORE
-/mobile/src/features/medications/ @REPLACE_MED_CORE
+/backend/app/routers/medicines.py @97blizzard97
+/backend/app/routers/scan.py @97blizzard97
+/backend/app/routers/reminders.py @97blizzard97
+/backend/app/routers/carer.py @97blizzard97
+/backend/app/services/medicines.py @97blizzard97
+/backend/app/services/scan.py @97blizzard97
+/backend/app/services/reminders.py @97blizzard97
+/backend/app/services/carer.py @97blizzard97
+/mobile/src/features/medications/ @97blizzard97
 
 # World / trees
-/backend/app/routers/world.py @REPLACE_WORLD
-/backend/app/services/world_trees.py @REPLACE_WORLD
-/mobile/src/features/world/ @REPLACE_WORLD
+/backend/app/routers/world.py @blin046890
+/backend/app/services/world_trees.py @blin046890
+/mobile/src/features/world/ @blin046890
