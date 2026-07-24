@@ -37,23 +37,16 @@ export function MedicineSearchSection({
       <Text style={styles.sectionTitle}>
         {t('medications.searchTitle', locale)}
       </Text>
-      <View style={styles.searchRow}>
-        <TextInput
-          value={query}
-          onChangeText={onQueryChange}
-          placeholder={t('medications.searchPlaceholder', locale)}
-          autoCapitalize="none"
-          autoCorrect={false}
-          style={styles.input}
-          onSubmitEditing={onSearch}
-          returnKeyType="search"
-        />
-        <Pressable style={styles.searchButton} onPress={onSearch}>
-          <Text style={styles.searchButtonLabel}>
-            {t('medications.searchButton', locale)}
-          </Text>
-        </Pressable>
-      </View>
+      <TextInput
+        value={query}
+        onChangeText={onQueryChange}
+        placeholder={t('medications.searchPlaceholder', locale)}
+        autoCapitalize="none"
+        autoCorrect={false}
+        style={styles.input}
+        onSubmitEditing={onSearch}
+        returnKeyType="search"
+      />
       {isSearching ? (
         <ActivityIndicator style={styles.spinner} />
       ) : null}
@@ -89,29 +82,13 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginBottom: 8,
   },
-  searchRow: {
-    flexDirection: 'row',
-    gap: 8,
-  },
   input: {
     borderColor: '#cbd5e1',
     borderRadius: 8,
     borderWidth: 1,
-    flex: 1,
     fontSize: 16,
     paddingHorizontal: 12,
     paddingVertical: 10,
-  },
-  searchButton: {
-    alignItems: 'center',
-    backgroundColor: '#0f766e',
-    borderRadius: 8,
-    justifyContent: 'center',
-    paddingHorizontal: 14,
-  },
-  searchButtonLabel: {
-    color: '#fff',
-    fontWeight: '600',
   },
   spinner: {
     marginTop: 12,

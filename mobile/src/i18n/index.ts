@@ -2,8 +2,10 @@ export type Locale = 'en' | 'zh' | 'vi';
 
 type MessageKey =
   | 'app.title'
+  | 'language.label'
   | 'disclaimer.general'
-  | 'nav.medications'
+  | 'nav.search'
+  | 'nav.myList'
   | 'nav.world'
   | 'medications.title'
   | 'medications.myListTitle'
@@ -29,6 +31,55 @@ type MessageKey =
   | 'medications.addToList'
   | 'medications.adding'
   | 'medications.addError'
+  | 'medications.addSheetTitle'
+  | 'medications.editSheetTitle'
+  | 'medications.saving'
+  | 'medications.saveChanges'
+  | 'medications.editError'
+  | 'medications.edit'
+  | 'medications.remove'
+  | 'medications.removeConfirmTitle'
+  | 'medications.removeConfirmMessage'
+  | 'medications.removeError'
+  | 'medications.goToSearch'
+  | 'medications.addFromSearch'
+  | 'medications.cancel'
+  | 'medications.formLabel'
+  | 'medications.doseLabel'
+  | 'medications.strengthsHint'
+  | 'medications.frequencyLabel'
+  | 'medications.withFoodLabel'
+  | 'medications.withFoodYes'
+  | 'medications.withFoodNo'
+  | 'medications.withFoodSkip'
+  | 'medications.timesLabel'
+  | 'medications.timesHint'
+  | 'medications.timesPlaceholder'
+  | 'medications.timesAdd'
+  | 'medications.timesRequired'
+  | 'medications.todayTitle'
+  | 'medications.todayError'
+  | 'medications.haveYouTaken'
+  | 'medications.taken'
+  | 'medications.skip'
+  | 'medications.allTakenToday'
+  | 'medications.treeCanGrow'
+  | 'medications.form.tablet'
+  | 'medications.form.capsule'
+  | 'medications.form.liquid'
+  | 'medications.form.inhaler'
+  | 'medications.freq.od'
+  | 'medications.freq.bd'
+  | 'medications.freq.tds'
+  | 'medications.freq.qds'
+  | 'medications.freq.mane'
+  | 'medications.freq.nocte'
+  | 'medications.freqAbbrev.od'
+  | 'medications.freqAbbrev.bd'
+  | 'medications.freqAbbrev.tds'
+  | 'medications.freqAbbrev.qds'
+  | 'medications.freqAbbrev.mane'
+  | 'medications.freqAbbrev.nocte'
   | 'world.title'
   | 'world.stubHint'
   | 'world.apiUnknown'
@@ -37,21 +88,23 @@ type MessageKey =
 const messages: Record<Locale, Record<MessageKey, string>> = {
   en: {
     'app.title': 'ThriveRx',
+    'language.label': 'Language',
     'disclaimer.general':
       'General information only — always confirm with your doctor or pharmacist.',
-    'nav.medications': 'Medicines',
+    'nav.search': 'Search',
+    'nav.myList': 'My list',
     'nav.world': 'World',
     'medications.title': 'Your medicines',
-    'medications.myListTitle': 'On your list',
+    'medications.myListTitle': 'My list',
     'medications.loading': 'Loading…',
     'medications.count': '{n} on your list',
     'medications.listEmpty':
-      'No medicines yet — search below and add one to your list.',
+      'No medicines yet — search the catalog and add one.',
     'medications.listError': 'Could not load your list. Is the backend running?',
     'medications.addedLabel': 'On your list',
     'medications.unknownName': 'Medicine',
-    'medications.searchTitle': 'Search catalog',
-    'medications.searchPlaceholder': 'e.g. metformin, paracetamol',
+    'medications.searchTitle': 'Search',
+    'medications.searchPlaceholder': 'Type a few letters… e.g. met, asp',
     'medications.searchButton': 'Search',
     'medications.searchError': 'Search failed. Check the backend is running.',
     'medications.searchEmpty': 'No matches — try another name.',
@@ -67,6 +120,58 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'medications.addToList': 'Add to my list',
     'medications.adding': 'Adding…',
     'medications.addError': 'Could not add — it may already be on your list.',
+    'medications.addSheetTitle': 'Add to my list',
+    'medications.editSheetTitle': 'Edit medication',
+    'medications.saving': 'Saving…',
+    'medications.saveChanges': 'Save changes',
+    'medications.editError': 'Could not save changes. Try again.',
+    'medications.edit': 'Edit',
+    'medications.remove': 'Remove',
+    'medications.removeConfirmTitle': 'Remove medication?',
+    'medications.removeConfirmMessage':
+      'Remove {name} from your list? This cannot be undone.',
+    'medications.removeError': 'Could not remove that medication. Try again.',
+    'medications.goToSearch': 'Search catalog',
+    'medications.addFromSearch': '+ Add medicine',
+    'medications.cancel': 'Cancel',
+    'medications.formLabel': 'Form',
+    'medications.doseLabel': 'Dose',
+    'medications.strengthsHint':
+      'Common pack strengths (demo only — not prescribing advice).',
+    'medications.frequencyLabel': 'How often',
+    'medications.withFoodLabel': 'With food?',
+    'medications.withFoodYes': 'Yes',
+    'medications.withFoodNo': 'No',
+    'medications.withFoodSkip': 'Not sure',
+    'medications.timesLabel': 'Usual times',
+    'medications.timesHint':
+      'Suggestions from how often you take it — tap to choose, or type HH:MM. Schedule prompts only.',
+    'medications.timesPlaceholder': 'HH:MM',
+    'medications.timesAdd': 'Add',
+    'medications.timesRequired': 'Add at least one time.',
+    'medications.todayTitle': 'Today',
+    'medications.todayError': 'Could not load today’s doses.',
+    'medications.haveYouTaken': 'Have you taken {name}?',
+    'medications.taken': 'Taken',
+    'medications.skip': 'Skip',
+    'medications.allTakenToday': 'All of today’s times marked Taken.',
+    'medications.treeCanGrow': 'Your tree can grow today.',
+    'medications.form.tablet': 'Tablet',
+    'medications.form.capsule': 'Capsule',
+    'medications.form.liquid': 'Liquid',
+    'medications.form.inhaler': 'Inhaler',
+    'medications.freq.od': 'Once daily',
+    'medications.freq.bd': 'Twice daily',
+    'medications.freq.tds': 'Three times daily',
+    'medications.freq.qds': 'Four times daily',
+    'medications.freq.mane': 'Morning',
+    'medications.freq.nocte': 'Night',
+    'medications.freqAbbrev.od': 'OD',
+    'medications.freqAbbrev.bd': 'BD',
+    'medications.freqAbbrev.tds': 'TDS',
+    'medications.freqAbbrev.qds': 'QDS',
+    'medications.freqAbbrev.mane': 'mane',
+    'medications.freqAbbrev.nocte': 'nocte',
     'world.title': 'Your world',
     'world.stubHint':
       'Trees and daily press live here (world module). Growth pauses, never punishes.',
@@ -75,19 +180,21 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
   },
   zh: {
     'app.title': 'ThriveRx',
+    'language.label': '语言',
     'disclaimer.general': '仅供参考 — 请务必向医生或药剂师确认。',
-    'nav.medications': '药物',
+    'nav.search': '搜索',
+    'nav.myList': '我的清单',
     'nav.world': '世界',
     'medications.title': '您的药物',
-    'medications.myListTitle': '您的清单',
+    'medications.myListTitle': '我的清单',
     'medications.loading': '加载中…',
     'medications.count': '清单上 {n} 种',
-    'medications.listEmpty': '暂无药物 — 请在下方搜索并添加。',
+    'medications.listEmpty': '暂无药物 — 请在搜索页添加。',
     'medications.listError': '无法加载清单。后端是否已启动？',
     'medications.addedLabel': '已在清单中',
     'medications.unknownName': '药物',
-    'medications.searchTitle': '搜索药品目录',
-    'medications.searchPlaceholder': '例如 metformin、扑热息痛',
+    'medications.searchTitle': '搜索',
+    'medications.searchPlaceholder': '输入几个字母… 如 met、阿莫',
     'medications.searchButton': '搜索',
     'medications.searchError': '搜索失败。请检查后端是否运行。',
     'medications.searchEmpty': '无匹配结果 — 请尝试其他名称。',
@@ -102,6 +209,56 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'medications.addToList': '添加到我的清单',
     'medications.adding': '添加中…',
     'medications.addError': '无法添加 — 可能已在清单中。',
+    'medications.addSheetTitle': '添加到我的清单',
+    'medications.editSheetTitle': '编辑药物',
+    'medications.saving': '保存中…',
+    'medications.saveChanges': '保存更改',
+    'medications.editError': '无法保存更改。请重试。',
+    'medications.edit': '编辑',
+    'medications.remove': '移除',
+    'medications.removeConfirmTitle': '移除药物？',
+    'medications.removeConfirmMessage': '从清单中移除 {name}？此操作无法撤销。',
+    'medications.removeError': '无法移除该药物。请重试。',
+    'medications.goToSearch': '搜索目录',
+    'medications.addFromSearch': '+ 添加药物',
+    'medications.cancel': '取消',
+    'medications.formLabel': '剂型',
+    'medications.doseLabel': '剂量',
+    'medications.strengthsHint': '常见规格（演示用 — 非处方建议）。',
+    'medications.frequencyLabel': '服用频率',
+    'medications.withFoodLabel': '是否随餐？',
+    'medications.withFoodYes': '是',
+    'medications.withFoodNo': '否',
+    'medications.withFoodSkip': '不确定',
+    'medications.timesLabel': '服用时间',
+    'medications.timesHint':
+      '根据服用频率提供建议 — 点选或输入 HH:MM。仅为日程提醒。',
+    'medications.timesPlaceholder': 'HH:MM',
+    'medications.timesAdd': '添加',
+    'medications.timesRequired': '请至少添加一个时间。',
+    'medications.todayTitle': '今天',
+    'medications.todayError': '无法加载今日服用记录。',
+    'medications.haveYouTaken': '您服过 {name} 了吗？',
+    'medications.taken': '已服用',
+    'medications.skip': '跳过',
+    'medications.allTakenToday': '今天的时间均已标记为已服用。',
+    'medications.treeCanGrow': '您的树今天可以成长。',
+    'medications.form.tablet': '片剂',
+    'medications.form.capsule': '胶囊',
+    'medications.form.liquid': '液体',
+    'medications.form.inhaler': '吸入剂',
+    'medications.freq.od': '每日一次',
+    'medications.freq.bd': '每日两次',
+    'medications.freq.tds': '每日三次',
+    'medications.freq.qds': '每日四次',
+    'medications.freq.mane': '早晨',
+    'medications.freq.nocte': '夜间',
+    'medications.freqAbbrev.od': 'OD',
+    'medications.freqAbbrev.bd': 'BD',
+    'medications.freqAbbrev.tds': 'TDS',
+    'medications.freqAbbrev.qds': 'QDS',
+    'medications.freqAbbrev.mane': 'mane',
+    'medications.freqAbbrev.nocte': 'nocte',
     'world.title': '您的世界',
     'world.stubHint': '树木与每日确认（世界模块）。生长会暂停，不会惩罚。',
     'world.apiUnknown': '无法加载世界（后端是否已启动？）',
@@ -109,22 +266,24 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
   },
   vi: {
     'app.title': 'ThriveRx',
+    'language.label': 'Ngôn ngữ',
     'disclaimer.general':
       'Chỉ mang tính tham khảo — luôn xác nhận với bác sĩ hoặc dược sĩ.',
-    'nav.medications': 'Thuốc',
+    'nav.search': 'Tìm kiếm',
+    'nav.myList': 'Danh sách',
     'nav.world': 'Thế giới',
     'medications.title': 'Thuốc của bạn',
-    'medications.myListTitle': 'Trong danh sách',
+    'medications.myListTitle': 'Danh sách của tôi',
     'medications.loading': 'Đang tải…',
     'medications.count': '{n} trong danh sách',
     'medications.listEmpty':
-      'Chưa có thuốc — tìm kiếm bên dưới và thêm vào danh sách.',
+      'Chưa có thuốc — tìm trong danh mục và thêm vào.',
     'medications.listError':
       'Không tải được danh sách. Backend đã chạy chưa?',
     'medications.addedLabel': 'Trong danh sách',
     'medications.unknownName': 'Thuốc',
-    'medications.searchTitle': 'Tìm trong danh mục',
-    'medications.searchPlaceholder': 'vd. metformin, paracetamol',
+    'medications.searchTitle': 'Tìm kiếm',
+    'medications.searchPlaceholder': 'Gõ vài chữ… vd. met, asp',
     'medications.searchButton': 'Tìm',
     'medications.searchError': 'Tìm kiếm thất bại. Kiểm tra backend.',
     'medications.searchEmpty': 'Không có kết quả — thử tên khác.',
@@ -140,6 +299,58 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'medications.addToList': 'Thêm vào danh sách',
     'medications.adding': 'Đang thêm…',
     'medications.addError': 'Không thêm được — có thể đã có trong danh sách.',
+    'medications.addSheetTitle': 'Thêm vào danh sách',
+    'medications.editSheetTitle': 'Sửa thuốc',
+    'medications.saving': 'Đang lưu…',
+    'medications.saveChanges': 'Lưu thay đổi',
+    'medications.editError': 'Không lưu được. Thử lại.',
+    'medications.edit': 'Sửa',
+    'medications.remove': 'Xóa',
+    'medications.removeConfirmTitle': 'Xóa thuốc?',
+    'medications.removeConfirmMessage':
+      'Xóa {name} khỏi danh sách? Không thể hoàn tác.',
+    'medications.removeError': 'Không xóa được thuốc. Thử lại.',
+    'medications.goToSearch': 'Tìm trong danh mục',
+    'medications.addFromSearch': '+ Thêm thuốc',
+    'medications.cancel': 'Hủy',
+    'medications.formLabel': 'Dạng thuốc',
+    'medications.doseLabel': 'Liều',
+    'medications.strengthsHint':
+      'Hàm lượng phổ biến (chỉ demo — không phải chỉ định).',
+    'medications.frequencyLabel': 'Tần suất',
+    'medications.withFoodLabel': 'Uống với thức ăn?',
+    'medications.withFoodYes': 'Có',
+    'medications.withFoodNo': 'Không',
+    'medications.withFoodSkip': 'Không chắc',
+    'medications.timesLabel': 'Giờ uống',
+    'medications.timesHint':
+      'Gợi ý theo tần suất — chạm để chọn, hoặc gõ HH:MM. Chỉ là nhắc lịch.',
+    'medications.timesPlaceholder': 'HH:MM',
+    'medications.timesAdd': 'Thêm',
+    'medications.timesRequired': 'Thêm ít nhất một giờ.',
+    'medications.todayTitle': 'Hôm nay',
+    'medications.todayError': 'Không tải được liều hôm nay.',
+    'medications.haveYouTaken': 'Bạn đã uống {name} chưa?',
+    'medications.taken': 'Đã uống',
+    'medications.skip': 'Bỏ qua',
+    'medications.allTakenToday': 'Đã đánh dấu Đã uống cho mọi giờ hôm nay.',
+    'medications.treeCanGrow': 'Cây của bạn có thể lớn hôm nay.',
+    'medications.form.tablet': 'Viên nén',
+    'medications.form.capsule': 'Viên nang',
+    'medications.form.liquid': 'Dung dịch',
+    'medications.form.inhaler': 'Ống hít',
+    'medications.freq.od': 'Một lần mỗi ngày',
+    'medications.freq.bd': 'Hai lần mỗi ngày',
+    'medications.freq.tds': 'Ba lần mỗi ngày',
+    'medications.freq.qds': 'Bốn lần mỗi ngày',
+    'medications.freq.mane': 'Buổi sáng',
+    'medications.freq.nocte': 'Buổi tối',
+    'medications.freqAbbrev.od': 'OD',
+    'medications.freqAbbrev.bd': 'BD',
+    'medications.freqAbbrev.tds': 'TDS',
+    'medications.freqAbbrev.qds': 'QDS',
+    'medications.freqAbbrev.mane': 'mane',
+    'medications.freqAbbrev.nocte': 'nocte',
     'world.title': 'Thế giới của bạn',
     'world.stubHint':
       'Cây và xác nhận hàng ngày (module thế giới). Tăng trưởng tạm dừng, không phạt.',

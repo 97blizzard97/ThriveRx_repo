@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routers import carer, health, medicines, reminders, scan, world
+from app.routers import carer, doses, health, medicines, reminders, scan, world
 
 app = FastAPI(
     title="ThriveRx API",
@@ -23,6 +23,7 @@ app.include_router(medicines.router)
 app.include_router(medicines.me_router)
 app.include_router(scan.router)
 app.include_router(reminders.router)
+app.include_router(doses.router)
 app.include_router(carer.router)
 app.include_router(world.router)
 

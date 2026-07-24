@@ -24,6 +24,7 @@ def load_medicines_seed(db: Session) -> int:
             names=entry.get("names", {}),
             content=entry.get("content", {}),
             source_metadata=entry.get("source_metadata", {}),
+            common_strengths=entry.get("common_strengths"),
         )
         db.merge(medicine)
         inserted += 1

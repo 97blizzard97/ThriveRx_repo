@@ -33,8 +33,19 @@
       "source_metadata": {
         "status": "demo_paraphrase",
         "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
-        "reviewed_by": null
-      }
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 500,
+          "unit": "mg"
+        },
+        {
+          "amount": 1000,
+          "unit": "mg"
+        }
+      ]
     },
     {
       "id": "a1000001-0000-4000-8000-000000000002",
@@ -69,8 +80,15 @@
       "source_metadata": {
         "status": "demo_paraphrase",
         "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
-        "reviewed_by": null
-      }
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 500,
+          "unit": "mg"
+        }
+      ]
     },
     {
       "id": "a1000001-0000-4000-8000-000000000003",
@@ -105,8 +123,587 @@
       "source_metadata": {
         "status": "demo_paraphrase",
         "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
-        "reviewed_by": null
-      }
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 250,
+          "unit": "mg"
+        },
+        {
+          "amount": 500,
+          "unit": "mg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000004",
+      "names": {
+        "en": "Perindopril",
+        "zh": "培哚普利",
+        "vi": "Perindopril"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "Often prescribed to lower high blood pressure. It is also used in some people as part of heart-failure care. Confirm with your doctor or pharmacist what it is for in your case.",
+          "how_usually_taken": "Usually taken once daily at the same time each day, with or without food, exactly as on your prescription label.",
+          "common_side_effects": "A dry cough, dizziness when standing, or tiredness can occur. Tell your pharmacist if a cough becomes bothersome.",
+          "check_with_pharmacist_if": "You are pregnant or planning pregnancy, have kidney problems, or take potassium supplements or water tablets.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "常用于降低高血压，也用于部分心力衰竭患者的治疗。请向医生或药剂师确认您的用药目的。",
+          "how_usually_taken": "通常每天一次、固定时间服用，可与食物同服或空腹，严格按处方标签。",
+          "common_side_effects": "可能出现干咳、站起时头晕或乏力。若咳嗽困扰请告知药剂师。",
+          "check_with_pharmacist_if": "您怀孕或计划怀孕、有肾脏问题，或正在服用钾补充剂或利尿药。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Thường được kê để hạ huyết áp cao; cũng dùng trong một số trường hợp suy tim. Hãy xác nhận với bác sĩ hoặc dược sĩ mục đích dùng của bạn.",
+          "how_usually_taken": "Thường uống mỗi ngày một lần, cùng giờ, có hoặc không có thức ăn, đúng theo nhãn đơn.",
+          "common_side_effects": "Có thể ho khô, chóng mặt khi đứng dậy, hoặc mệt. Báo dược sĩ nếu ho khó chịu.",
+          "check_with_pharmacist_if": "Bạn đang mang thai hoặc dự định có thai, có vấn đề thận, hoặc dùng bổ sung kali hay thuốc lợi tiểu.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 2,
+          "unit": "mg"
+        },
+        {
+          "amount": 4,
+          "unit": "mg"
+        },
+        {
+          "amount": 8,
+          "unit": "mg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000005",
+      "names": {
+        "en": "Telmisartan",
+        "zh": "替米沙坦",
+        "vi": "Telmisartan"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "Used to help lower high blood pressure. It is general information only — your doctor chooses it for your situation.",
+          "how_usually_taken": "Usually taken once a day, with or without food, at the dose and time on your prescription.",
+          "common_side_effects": "Dizziness, back pain, or sinus discomfort can occur. Low blood pressure symptoms such as light-headedness may appear when starting.",
+          "check_with_pharmacist_if": "You are pregnant or planning pregnancy, have severe kidney or liver problems, or take potassium supplements.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "用于帮助降低高血压。仅供参考 — 医生会根据您的情况选择用药。",
+          "how_usually_taken": "通常每天一次，可与食物同服或空腹，按处方上的剂量和时间。",
+          "common_side_effects": "可能出现头晕、背痛或鼻窦不适。开始时可能有低血压相关的轻微头晕。",
+          "check_with_pharmacist_if": "您怀孕或计划怀孕、有严重肝肾问题，或正在服用钾补充剂。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Dùng để hỗ trợ hạ huyết áp cao. Chỉ mang tính tham khảo — bác sĩ chọn thuốc theo tình trạng của bạn.",
+          "how_usually_taken": "Thường uống mỗi ngày một lần, có hoặc không có thức ăn, đúng liều và giờ trên đơn.",
+          "common_side_effects": "Có thể chóng mặt, đau lưng hoặc khó chịu xoang. Khi mới dùng có thể thấy choáng nhẹ do huyết áp thấp.",
+          "check_with_pharmacist_if": "Bạn đang mang thai hoặc dự định có thai, có vấn đề gan/thận nặng, hoặc dùng bổ sung kali.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 40,
+          "unit": "mg"
+        },
+        {
+          "amount": 80,
+          "unit": "mg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000006",
+      "names": {
+        "en": "Aspirin",
+        "zh": "阿司匹林",
+        "vi": "Aspirin"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "At low doses, often used as an antiplatelet medicine — sometimes called a “blood thinner” — after a heart attack or for heart protection as your doctor prescribes. This demo focuses on that role, not everyday pain relief.",
+          "how_usually_taken": "Usually taken once daily with food or a glass of water, exactly as prescribed. Do not stop suddenly without advice.",
+          "common_side_effects": "Stomach upset or easy bruising can occur. Seek urgent care for black stools, vomiting blood, or unusual bleeding.",
+          "check_with_pharmacist_if": "You have a stomach ulcer history, take other blood thinners, have asthma worsened by aspirin, or need surgery soon.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "低剂量时常作为抗血小板药（有时称“血液稀释剂”），用于心脏病发作后或按医嘱保护心脏。本演示侧重该用途，而非日常止痛。",
+          "how_usually_taken": "通常每天一次，随餐或用水送服，严格按处方。未经建议勿突然停药。",
+          "common_side_effects": "可能出现胃不适或容易淤青。若黑便、呕血或异常出血请立即就医。",
+          "check_with_pharmacist_if": "您有胃溃疡史、正在服用其他抗凝血药、阿司匹林会加重哮喘，或即将手术。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Ở liều thấp thường dùng như thuốc chống kết tập tiểu cầu — đôi khi gọi là “làm loãng máu” — sau nhồi máu hoặc để bảo vệ tim theo kê đơn. Bản demo này tập trung vai trò đó, không phải giảm đau hàng ngày.",
+          "how_usually_taken": "Thường uống mỗi ngày một lần cùng thức ăn hoặc nước, đúng theo đơn. Không tự dừng đột ngột.",
+          "common_side_effects": "Có thể khó chịu dạ dày hoặc dễ bầm. Cần cấp cứu nếu phân đen, nôn ra máu hoặc chảy máu bất thường.",
+          "check_with_pharmacist_if": "Bạn từng loét dạ dày, đang dùng thuốc chống đông khác, hen nặng hơn vì aspirin, hoặc sắp phẫu thuật.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 100,
+          "unit": "mg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000007",
+      "names": {
+        "en": "Metoprolol",
+        "zh": "美托洛尔",
+        "vi": "Metoprolol"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "Used to help control heart rate and treat certain heart conditions, and sometimes to reduce risk after heart events — as your doctor prescribes. Confirm the reason with your pharmacist if unsure.",
+          "how_usually_taken": "Taken by mouth at regular times, often once or twice daily depending on the product. Swallow tablets as directed; do not stop abruptly without medical advice.",
+          "common_side_effects": "Tiredness, slower pulse, cold hands or feet, or dizziness can occur. Tell your care team if you feel unusually breathless or faint.",
+          "check_with_pharmacist_if": "You have asthma or breathing problems, very slow heart rate, diabetes needing close sugar monitoring, or upcoming surgery.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "用于帮助控制心率、治疗某些心脏疾病，有时也用于心脏事件后降低风险 — 按医嘱使用。如有疑问请向药剂师确认用途。",
+          "how_usually_taken": "按固定时间口服，常见每日一或两次，视剂型而定。按说明吞服；未经医嘱勿突然停药。",
+          "common_side_effects": "可能出现乏力、脉搏变慢、手脚发冷或头晕。若异常气短或晕厥请告知医护人员。",
+          "check_with_pharmacist_if": "您有哮喘或呼吸问题、心率很慢、糖尿病需密切监测血糖，或即将手术。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Dùng để hỗ trợ kiểm soát nhịp tim và một số bệnh tim, đôi khi giảm nguy cơ sau sự kiện tim — theo kê đơn. Hãy hỏi dược sĩ nếu chưa rõ lý do dùng.",
+          "how_usually_taken": "Uống đúng giờ, thường một hoặc hai lần mỗi ngày tùy dạng thuốc. Nuốt viên theo hướng dẫn; không dừng đột ngột nếu chưa được khuyên.",
+          "common_side_effects": "Có thể mệt, mạch chậm, tay chân lạnh hoặc chóng mặt. Báo nhân viên y tế nếu khó thở bất thường hoặc ngất.",
+          "check_with_pharmacist_if": "Bạn bị hen hoặc khó thở, nhịp tim rất chậm, đái tháo đường cần theo dõi đường huyết chặt, hoặc sắp phẫu thuật.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 25,
+          "unit": "mg"
+        },
+        {
+          "amount": 50,
+          "unit": "mg"
+        },
+        {
+          "amount": 100,
+          "unit": "mg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000008",
+      "names": {
+        "en": "Ibuprofen",
+        "zh": "布洛芬",
+        "vi": "Ibuprofen"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "Used for relief of pain, inflammation, and fever. It is general information only — check the pack or ask a pharmacist what suits you.",
+          "how_usually_taken": "Usually taken with food or milk to reduce stomach upset, at the lowest effective dose for the shortest time needed.",
+          "common_side_effects": "Stomach pain, heartburn, or nausea can occur. Long or high-dose use raises risks — follow pack limits.",
+          "check_with_pharmacist_if": "You have stomach ulcers, kidney disease, heart problems, take blood thinners, or are in late pregnancy.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "用于缓解疼痛、炎症和发烧。仅供参考 — 请查看包装或咨询药剂师是否适合您。",
+          "how_usually_taken": "通常随餐或牛奶服用以减少胃刺激，用最低有效剂量、尽可能短的时间。",
+          "common_side_effects": "可能出现胃痛、烧心或恶心。长期或大剂量使用风险增加 — 请遵守包装限量。",
+          "check_with_pharmacist_if": "您有胃溃疡、肾脏疾病、心脏问题、正在服用抗凝血药，或处于妊娠晚期。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Dùng để giảm đau, viêm và sốt. Chỉ mang tính tham khảo — xem bao bì hoặc hỏi dược sĩ liệu có phù hợp.",
+          "how_usually_taken": "Thường uống cùng thức ăn hoặc sữa để giảm kích ứng dạ dày, liều thấp nhất có hiệu quả trong thời gian ngắn nhất cần thiết.",
+          "common_side_effects": "Có thể đau bụng, ợ nóng hoặc buồn nôn. Dùng lâu hoặc liều cao tăng nguy cơ — tuân thủ giới hạn trên bao bì.",
+          "check_with_pharmacist_if": "Bạn có loét dạ dày, bệnh thận, vấn đề tim, đang dùng thuốc chống đông, hoặc mang thai giai đoạn muộn.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 200,
+          "unit": "mg"
+        },
+        {
+          "amount": 400,
+          "unit": "mg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000009",
+      "names": {
+        "en": "Amlodipine",
+        "zh": "氨氯地平",
+        "vi": "Amlodipine"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "Often used to lower high blood pressure; sometimes also for angina (chest pain from the heart’s blood supply). Ask your doctor or pharmacist what it is for in your case.",
+          "how_usually_taken": "Usually taken once daily at the same time, with or without food, as on your prescription label.",
+          "common_side_effects": "Swollen ankles, flushing, headache, or dizziness can occur, especially when starting or increasing the dose.",
+          "check_with_pharmacist_if": "You have severe low blood pressure, liver problems, or take other blood-pressure medicines that make you dizzy.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "常用于降低高血压；有时也用于心绞痛（心脏供血不足引起的胸痛）。请向医生或药剂师确认您的用途。",
+          "how_usually_taken": "通常每天一次、固定时间服用，可与食物同服或空腹，按处方标签。",
+          "common_side_effects": "可能出现脚踝肿胀、面部潮红、头痛或头晕，尤其在开始或加量时。",
+          "check_with_pharmacist_if": "您有严重低血压、肝脏问题，或正在服用其他会让您头晕的降压药。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Thường dùng để hạ huyết áp cao; đôi khi cũng cho đau thắt ngực (đau ngực do thiếu máu nuôi tim). Hỏi bác sĩ hoặc dược sĩ mục đích dùng của bạn.",
+          "how_usually_taken": "Thường uống mỗi ngày một lần, cùng giờ, có hoặc không có thức ăn, đúng nhãn đơn.",
+          "common_side_effects": "Có thể sưng mắt cá, đỏ mặt, đau đầu hoặc chóng mặt, nhất là khi mới dùng hoặc tăng liều.",
+          "check_with_pharmacist_if": "Bạn huyết áp thấp nặng, có vấn đề gan, hoặc đang dùng thuốc hạ áp khác khiến chóng mặt.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 5,
+          "unit": "mg"
+        },
+        {
+          "amount": 10,
+          "unit": "mg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000010",
+      "names": {
+        "en": "Rosuvastatin",
+        "zh": "瑞舒伐他汀",
+        "vi": "Rosuvastatin"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "Used to help lower cholesterol and reduce cardiovascular risk as your doctor prescribes. It works best alongside healthy eating and activity advice you have been given.",
+          "how_usually_taken": "Usually taken once daily, with or without food, at the same time each day. Keep taking it even if you feel well, unless advised otherwise.",
+          "common_side_effects": "Muscle aches, headache, or stomach upset can occur. Report unexplained severe muscle pain or dark urine promptly.",
+          "check_with_pharmacist_if": "You are pregnant or breastfeeding, have liver disease, drink a lot of alcohol, or take other medicines that interact with statins.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "用于帮助降低胆固醇、按医嘱降低心血管风险。最好配合已给出的健康饮食与活动建议。",
+          "how_usually_taken": "通常每天一次，可与食物同服或空腹，固定时间。即使感觉良好也应继续服用，除非另有医嘱。",
+          "common_side_effects": "可能出现肌肉酸痛、头痛或胃不适。若不明原因的严重肌肉疼痛或尿色变深请尽快报告。",
+          "check_with_pharmacist_if": "您怀孕或哺乳、有肝脏疾病、大量饮酒，或正在服用可能与他汀类相互作用的药物。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Dùng để hỗ trợ hạ cholesterol và giảm nguy cơ tim mạch theo kê đơn. Hiệu quả tốt hơn khi kết hợp chế độ ăn và vận động đã được hướng dẫn.",
+          "how_usually_taken": "Thường uống mỗi ngày một lần, có hoặc không có thức ăn, cùng giờ. Tiếp tục dùng dù thấy khỏe, trừ khi được khuyên khác.",
+          "common_side_effects": "Có thể đau cơ, đau đầu hoặc khó chịu bụng. Báo ngay nếu đau cơ nặng không rõ nguyên nhân hoặc nước tiểu sẫm.",
+          "check_with_pharmacist_if": "Bạn đang mang thai hoặc cho con bú, có bệnh gan, uống nhiều rượu, hoặc dùng thuốc khác tương tác với statin.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 5,
+          "unit": "mg"
+        },
+        {
+          "amount": 10,
+          "unit": "mg"
+        },
+        {
+          "amount": 20,
+          "unit": "mg"
+        },
+        {
+          "amount": 40,
+          "unit": "mg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000011",
+      "names": {
+        "en": "Ondansetron",
+        "zh": "昂丹司琼",
+        "vi": "Ondansetron"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "Used to help prevent or treat nausea and vomiting — for example after chemotherapy or surgery. Your doctor decides when it is appropriate for you.",
+          "how_usually_taken": "Taken by mouth as tablets or dissolving films, or given in hospital by injection, at the times ordered for your treatment.",
+          "common_side_effects": "Headache, constipation, or a flushed feeling can occur. Seek care for an irregular heartbeat or severe allergic reaction.",
+          "check_with_pharmacist_if": "You have heart rhythm problems, take other medicines that affect heart rhythm, or have severe constipation or bowel blockage.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "用于帮助预防或治疗恶心呕吐 — 例如化疗或手术后。医生会决定是否适合您。",
+          "how_usually_taken": "可口服片剂或口溶膜，或在医院注射，按治疗安排的时间使用。",
+          "common_side_effects": "可能出现头痛、便秘或面部潮热。若心律不齐或严重过敏反应请就医。",
+          "check_with_pharmacist_if": "您有心律问题、正在服用影响心律的其他药物，或有严重便秘或肠梗阻。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Dùng để hỗ trợ phòng hoặc điều trị buồn nôn và nôn — ví dụ sau hóa trị hoặc phẫu thuật. Bác sĩ quyết định khi nào phù hợp với bạn.",
+          "how_usually_taken": "Uống dạng viên hoặc màng tan trong miệng, hoặc tiêm tại bệnh viện, đúng giờ theo điều trị.",
+          "common_side_effects": "Có thể đau đầu, táo bón hoặc nóng mặt. Cần khám nếu nhịp tim không đều hoặc dị ứng nặng.",
+          "check_with_pharmacist_if": "Bạn có rối loạn nhịp tim, đang dùng thuốc khác ảnh hưởng nhịp tim, hoặc táo bón nặng / tắc ruột.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 4,
+          "unit": "mg"
+        },
+        {
+          "amount": 8,
+          "unit": "mg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000012",
+      "names": {
+        "en": "Salbutamol",
+        "zh": "沙丁胺醇",
+        "vi": "Salbutamol"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "A reliever inhaler medicine used to ease asthma or wheeze symptoms quickly when they flare. It does not replace your preventer inhaler if you have one prescribed.",
+          "how_usually_taken": "Inhaled through a puffer (often with a spacer), as shown by your pharmacist or asthma educator. Follow the dose on your action plan.",
+          "common_side_effects": "Shaky hands, a fast heartbeat, or mild throat irritation can occur after use.",
+          "check_with_pharmacist_if": "You need your reliever more often than usual, have chest pain with use, or are unsure how to use your inhaler technique.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "属于缓解症状的吸入药，用于哮喘或喘息发作时快速缓解。不能替代已开具的预防性吸入药。",
+          "how_usually_taken": "通过气雾剂吸入（常配合储雾罐），按药剂师或哮喘教育者示范使用。遵循您的哮喘行动计划剂量。",
+          "common_side_effects": "使用后可能出现手抖、心跳加快或轻微咽喉刺激。",
+          "check_with_pharmacist_if": "您需要比平时更频繁使用缓解药、使用时胸痛，或不确定吸入技巧是否正确。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Thuốc hít cắt cơn dùng để nhanh giảm triệu chứng hen hoặc khò khè khi bùng phát. Không thay thế thuốc hít dự phòng nếu đã được kê.",
+          "how_usually_taken": "Hít qua bình xịt (thường kèm buồng đệm), theo hướng dẫn của dược sĩ hoặc giáo dục hen. Tuân thủ liều trên kế hoạch hành động.",
+          "common_side_effects": "Sau khi dùng có thể tay run, tim đập nhanh hoặc kích ứng họng nhẹ.",
+          "check_with_pharmacist_if": "Bạn cần thuốc cắt cơn thường hơn bình thường, đau ngực khi dùng, hoặc chưa chắc kỹ thuật hít.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 100,
+          "unit": "mcg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000013",
+      "names": {
+        "en": "Sertraline",
+        "zh": "舍曲林",
+        "vi": "Sertraline"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "Often prescribed for depression and for some anxiety conditions. It is general information only — your doctor decides if it suits you and how long to continue.",
+          "how_usually_taken": "Usually taken once daily, with or without food, at a consistent time. Benefits may take a few weeks; do not stop suddenly without advice.",
+          "common_side_effects": "Nausea, sleep changes, headache, or sexual side effects can occur, especially early on. Seek urgent help for thoughts of self-harm.",
+          "check_with_pharmacist_if": "You take other antidepressants or migraine medicines (serotonin risk), are pregnant or breastfeeding, or have a bleeding tendency.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "常用于治疗抑郁症及某些焦虑障碍。仅供参考 — 医生会决定是否适合您以及疗程长短。",
+          "how_usually_taken": "通常每天一次，可与食物同服或空腹，固定时间。起效可能需数周；未经建议勿突然停药。",
+          "common_side_effects": "可能出现恶心、睡眠变化、头痛或性方面副作用，尤其在初期。若有自伤念头请立即求助。",
+          "check_with_pharmacist_if": "您正在服用其他抗抑郁药或偏头痛药（血清素风险）、怀孕或哺乳，或有出血倾向。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Thường được kê cho trầm cảm và một số rối loạn lo âu. Chỉ mang tính tham khảo — bác sĩ quyết định có phù hợp và dùng bao lâu.",
+          "how_usually_taken": "Thường uống mỗi ngày một lần, có hoặc không có thức ăn, cùng giờ. Có thể mất vài tuần mới thấy hiệu quả; không dừng đột ngột nếu chưa được khuyên.",
+          "common_side_effects": "Có thể buồn nôn, thay đổi giấc ngủ, đau đầu hoặc tác dụng phụ tình dục, nhất là giai đoạn đầu. Cần hỗ trợ khẩn nếu có ý nghĩ tự hại.",
+          "check_with_pharmacist_if": "Bạn đang dùng thuốc chống trầm cảm khác hoặc thuốc migraine (nguy cơ serotonin), mang thai hoặc cho con bú, hoặc dễ chảy máu.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 50,
+          "unit": "mg"
+        },
+        {
+          "amount": 100,
+          "unit": "mg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000014",
+      "names": {
+        "en": "Furosemide",
+        "zh": "呋塞米",
+        "vi": "Furosemide"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "A water tablet used to help remove excess fluid (oedema), such as swollen legs or fluid on the lungs. It is also sometimes used for blood pressure. Confirm your indication with your pharmacist.",
+          "how_usually_taken": "Usually taken in the morning (and sometimes midday) so frequent toilet trips are less disruptive at night. Take exactly as prescribed.",
+          "common_side_effects": "Passing more urine, thirst, dizziness, or muscle cramps from salt and fluid shifts can occur.",
+          "check_with_pharmacist_if": "You have kidney problems, gout, take digoxin or lithium, or feel very dizzy when standing.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "利尿药，用于帮助排出多余液体（水肿），如腿肿或肺部积液；有时也用于血压。请向药剂师确认您的适应证。",
+          "how_usually_taken": "通常在早晨（有时中午）服用，以减少夜间频繁如厕。严格按处方服用。",
+          "common_side_effects": "可能尿量增多、口渴、头晕，或因盐分和液体变化引起肌肉抽筋。",
+          "check_with_pharmacist_if": "您有肾脏问题、痛风、正在服用地高辛或锂剂，或站起时明显头晕。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Thuốc lợi tiểu giúp thải dịch thừa (phù), như chân sưng hoặc dịch ở phổi; đôi khi cũng dùng cho huyết áp. Hãy xác nhận chỉ định với dược sĩ.",
+          "how_usually_taken": "Thường uống buổi sáng (và đôi khi giữa ngày) để hạn chế đi vệ sinh ban đêm. Uống đúng theo đơn.",
+          "common_side_effects": "Có thể tiểu nhiều, khát, chóng mặt, hoặc chuột rút do thay đổi muối và dịch.",
+          "check_with_pharmacist_if": "Bạn có vấn đề thận, gout, đang dùng digoxin hoặc lithium, hoặc chóng mặt nhiều khi đứng dậy.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 20,
+          "unit": "mg"
+        },
+        {
+          "amount": 40,
+          "unit": "mg"
+        }
+      ]
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000015",
+      "names": {
+        "en": "Alendronate",
+        "zh": "阿伦膦酸钠",
+        "vi": "Alendronate"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "Used to help strengthen bones and treat or prevent osteoporosis as prescribed. It is general information only — follow your doctor’s plan for bone health.",
+          "how_usually_taken": "Usually taken once weekly first thing in the morning with a full glass of plain water only. Stay upright for at least 30 minutes and do not eat or take other medicines in that time.",
+          "common_side_effects": "Stomach upset, heartburn, or muscle/joint aches can occur. Report new or worsening swallowing pain or chest pain after doses.",
+          "check_with_pharmacist_if": "You cannot sit or stand upright for 30 minutes, have swallowing problems or active stomach ulcers, or have very low calcium levels.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "用于帮助强化骨骼、按医嘱治疗或预防骨质疏松。仅供参考 — 请遵循医生的骨健康计划。",
+          "how_usually_taken": "通常每周一次，清晨起床后仅用一杯白开水送服。服药后至少保持直立 30 分钟，此期间勿进食或服用其他药物。",
+          "common_side_effects": "可能出现胃不适、烧心或肌肉/关节酸痛。若服药后吞咽疼痛加重或胸痛请报告。",
+          "check_with_pharmacist_if": "您无法保持坐立或站立 30 分钟、有吞咽困难或活动性胃溃疡，或血钙很低。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Dùng để hỗ trợ củng cố xương và điều trị/phòng loãng xương theo kê đơn. Chỉ mang tính tham khảo — tuân theo kế hoạch sức khỏe xương của bác sĩ.",
+          "how_usually_taken": "Thường uống mỗi tuần một lần vào sáng sớm chỉ với một ly nước lọc. Giữ tư thế đứng/ngồi thẳng ít nhất 30 phút và không ăn hay uống thuốc khác trong thời gian đó.",
+          "common_side_effects": "Có thể khó chịu dạ dày, ợ nóng hoặc đau cơ/khớp. Báo nếu đau khi nuốt mới xuất hiện/nặng hơn hoặc đau ngực sau liều.",
+          "check_with_pharmacist_if": "Bạn không thể ngồi hoặc đứng thẳng 30 phút, khó nuốt hoặc loét dạ dày đang hoạt động, hoặc canxi máu rất thấp.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null,
+        "strengths_note": "Illustrative common AU pack strengths for demo chips only — not a dose recommendation or prescribing advice."
+      },
+      "common_strengths": [
+        {
+          "amount": 70,
+          "unit": "mg"
+        }
+      ]
     }
   ],
   "_note": "Curated demo entries with source metadata. EN is demo-reviewed; zh/vi flagged translation_reviewed: false per PRD §7.5."

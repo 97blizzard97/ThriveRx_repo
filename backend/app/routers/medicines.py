@@ -10,6 +10,7 @@ from app.schemas.medications import (
     MedicineSummary,
     PatientMedication,
     PatientMedicationCreate,
+    PatientMedicationUpdate,
 )
 from app.services import medicines as medicines_service
 from app.services.users import ensure_stub_user
@@ -20,17 +21,19 @@ router = APIRouter(prefix="/api/v1/medicines", tags=["medications"])
 @router.get("/search", response_model=list[MedicineSummary])
 def search_medicines(
     q: str = "",
+    locale: str = "en",
     db: Session = Depends(get_db),
 ) -> list[MedicineSummary]:
-    return medicines_service.search_medicines(db, q)
+    return medicines_service.search_medicines(db, q, locale)
 
 
 @router.get("/{medicine_id}", response_model=MedicineDetail)
 def get_medicine(
     medicine_id: UUID,
+    locale: str = "en",
     db: Session = Depends(get_db),
 ) -> MedicineDetail:
-    detail = medicines_service.get_medicine(db, medicine_id)
+    detail = medicines_service.get_medicine(db, medicine_id, locale)
     if detail is None:
         raise HTTPException(status_code=404, detail="Medicine not found")
     return detail
@@ -54,6 +57,23 @@ def add_my_medication(
     try:
         return medicines_service.add_patient_medication(db, STUB_USER_ID, payload)
     except ValueError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+
+
+@me_router.patch(
+    "/{patient_medication_id}", response_model=PatientMedication
+)
+def update_my_medication(
+    patient_medication_id: UUID,
+    payload: PatientMedicationUpdate,
+    db: Session = Depends(get_db),
+) -> PatientMedication:
+    ensure_stub_user(db)
+    try:
+        return medicines_service.update_patient_medication(
+            db, STUB_USER_ID, patient_medication_id, payload
+        )
+    except LookupError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 

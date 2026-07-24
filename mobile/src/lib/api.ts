@@ -51,3 +51,43 @@ export async function apiPost<T, B = unknown>(
   }
   return response.json() as Promise<T>;
 }
+
+export async function apiPatch<T, B = unknown>(
+  path: string,
+  body: B,
+): Promise<T> {
+  const response = await fetch(`${getApiBaseUrl()}${path}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) {
+    throw await parseError(response, path);
+  }
+  return response.json() as Promise<T>;
+}
+
+export async function apiPut<T, B = unknown>(
+  path: string,
+  body: B,
+): Promise<T> {
+  const response = await fetch(`${getApiBaseUrl()}${path}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!response.ok) {
+    throw await parseError(response, path);
+  }
+  return response.json() as Promise<T>;
+}
+
+export async function apiDelete(path: string): Promise<void> {
+  const response = await fetch(`${getApiBaseUrl()}${path}`, {
+    method: 'DELETE',
+  });
+  if (!response.ok) {
+    throw await parseError(response, path);
+  }
+  // 204/empty success bodies must not be JSON-parsed.
+}
