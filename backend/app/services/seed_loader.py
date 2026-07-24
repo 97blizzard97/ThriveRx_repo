@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 
 from app.models import Medicine
 
-SEEDS_PATH = Path(__file__).resolve().parents[1] / "seeds" / "medicines.json"
+SEEDS_PATH = Path(__file__).resolve().parents[2] / "seeds" / "medicines.json"
 
 
 def load_medicines_seed(db: Session) -> int:

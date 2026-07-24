@@ -1,4 +1,113 @@
 {
-  "medicines": [],
-  "_note": "Curated demo entries go here with source metadata (e.g. TGA CMI reference). Do not add LLM-generated clinical text."
+  "medicines": [
+    {
+      "id": "a1000001-0000-4000-8000-000000000001",
+      "names": {
+        "en": "Metformin",
+        "zh": "二甲双胍",
+        "vi": "Metformin"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "Often used to help manage type 2 diabetes by improving how the body handles blood sugar. It is general information only — your doctor prescribes it for your situation.",
+          "how_usually_taken": "Usually taken with meals, at the times and doses on your prescription label. Swallow tablets whole unless your pharmacist says otherwise.",
+          "common_side_effects": "Upset stomach, nausea, or diarrhoea are common when starting. These often ease after a few weeks.",
+          "check_with_pharmacist_if": "You have kidney problems, are very unwell, or plan to have surgery or an X-ray with contrast dye.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "常用于帮助管理 2 型糖尿病，改善身体对血糖的处理。仅供参考 — 医生会根据您的情况开药。",
+          "how_usually_taken": "通常随餐服用，按处方标签上的时间和剂量。除非药剂师另有说明，请整片吞服。",
+          "common_side_effects": "开始时可能出现胃不适、恶心或腹泻，几周后常会减轻。",
+          "check_with_pharmacist_if": "您有肾脏问题、身体很不适，或计划手术或使用造影剂做 X 光检查。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Thường được dùng để hỗ trợ điều trị đái tháo đường type 2 bằng cách giúp cơ thể xử lý đường huyết. Chỉ mang tính tham khảo — bác sĩ kê đơn theo tình trạng của bạn.",
+          "how_usually_taken": "Thường uống cùng bữa ăn, đúng giờ và liều trên nhãn thuốc. Nuốt cả viên trừ khi dược sĩ hướng dẫn khác.",
+          "common_side_effects": "Đau bụng, buồn nôn hoặc tiêu chảy khá phổ biến khi mới bắt đầu, thường giảm sau vài tuần.",
+          "check_with_pharmacist_if": "Bạn có vấn đề thận, rất ốm, hoặc sắp phẫu thuật/chụp X-quang có thuốc cản quang.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null
+      }
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000002",
+      "names": {
+        "en": "Paracetamol",
+        "zh": "扑热息痛",
+        "vi": "Paracetamol"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "Used for relief of pain and to reduce fever. It does not reduce inflammation the way some other pain medicines do.",
+          "how_usually_taken": "Taken by mouth with water, usually spaced out across the day. Do not exceed the maximum daily amount on the pack or from your pharmacist.",
+          "common_side_effects": "When used as directed, side effects are uncommon. Taking too much can seriously harm the liver.",
+          "check_with_pharmacist_if": "You drink alcohol regularly, take other medicines containing paracetamol, or have liver disease.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "用于缓解疼痛和退烧。不像某些其他止痛药那样减轻炎症。",
+          "how_usually_taken": "用水口服，通常分散在一天内服用。不要超过包装或药剂师说明的每日最大剂量。",
+          "common_side_effects": "按说明使用时副作用不常见。过量可能严重损害肝脏。",
+          "check_with_pharmacist_if": "您经常饮酒、服用含扑热息痛的其他药物，或有肝脏疾病。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Dùng để giảm đau và hạ sốt. Không giảm viêm như một số thuốc giảm đau khác.",
+          "how_usually_taken": "Uống với nước, thường chia nhiều lần trong ngày. Không vượt quá liều tối đa trên bao bì hoặc do dược sĩ hướng dẫn.",
+          "common_side_effects": "Khi dùng đúng cách, tác dụng phụ hiếm. Uống quá liều có thể gây hại gan nghiêm trọng.",
+          "check_with_pharmacist_if": "Bạn uống rượu thường xuyên, dùng thuốc khác có paracetamol, hoặc có bệnh gan.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null
+      }
+    },
+    {
+      "id": "a1000001-0000-4000-8000-000000000003",
+      "names": {
+        "en": "Amoxicillin",
+        "zh": "阿莫西林",
+        "vi": "Amoxicillin"
+      },
+      "content": {
+        "en": {
+          "what_its_for": "An antibiotic used to treat certain bacterial infections. It does not work for viral infections such as the common cold.",
+          "how_usually_taken": "Usually taken at evenly spaced times until the full course is finished, even if you feel better sooner.",
+          "common_side_effects": "Nausea, diarrhoea, or rash can occur. Allergic reactions are possible — seek urgent care for breathing difficulty or swelling.",
+          "check_with_pharmacist_if": "You have a penicillin allergy, are pregnant, or take the blood thinner warfarin.",
+          "translation_reviewed": true
+        },
+        "zh": {
+          "what_its_for": "用于治疗某些细菌感染的抗生素。对普通感冒等病毒感染无效。",
+          "how_usually_taken": "通常按均匀间隔服用，直到完成整个疗程，即使较早感觉好转也应继续。",
+          "common_side_effects": "可能出现恶心、腹泻或皮疹。可能发生过敏反应 — 若呼吸困难或肿胀请立即就医。",
+          "check_with_pharmacist_if": "您对青霉素过敏、怀孕，或正在服用抗凝血药华法林。",
+          "translation_reviewed": false
+        },
+        "vi": {
+          "what_its_for": "Kháng sinh dùng cho một số nhiễm trùng do vi khuẩn. Không có tác dụng với nhiễm virus như cảm thông thường.",
+          "how_usually_taken": "Thường uống cách đều nhau đến hết liệu trình, kể cả khi bạn thấy khỏe hơn sớm.",
+          "common_side_effects": "Có thể buồn nôn, tiêu chảy hoặc phát ban. Dị ứng có thể xảy ra — cần cấp cứu nếu khó thở hoặc sưng.",
+          "check_with_pharmacist_if": "Bạn dị ứng penicillin, đang mang thai, hoặc dùng thuốc chống đông warfarin.",
+          "translation_reviewed": false
+        }
+      },
+      "source_metadata": {
+        "status": "demo_paraphrase",
+        "reference": "MVP demo entry — illustrative plain language, not copied from TGA CMI",
+        "reviewed_by": null
+      }
+    }
+  ],
+  "_note": "Curated demo entries with source metadata. EN is demo-reviewed; zh/vi flagged translation_reviewed: false per PRD §7.5."
 }
