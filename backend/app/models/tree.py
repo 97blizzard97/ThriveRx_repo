@@ -2,7 +2,7 @@ import uuid
 from datetime import date, datetime
 from typing import TYPE_CHECKING
 
-from sqlalchemy import Date, DateTime, ForeignKey, Integer, String, Uuid
+from sqlalchemy import Date, DateTime, Float, ForeignKey, Integer, String, Uuid
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.database import Base
@@ -28,6 +28,11 @@ class Tree(Base):
     )
     accumulated_growth_days: Mapped[int] = mapped_column(Integer, default=0)
     last_press_date: Mapped[date | None] = mapped_column(Date, nullable=True)
+    # Random position on the world/planet sphere, generated once at creation
+    # and never recomputed — the planet view is stable across reloads.
+    # Degrees: latitude in [-90, 90], longitude in [-180, 180].
+    planet_lat: Mapped[float] = mapped_column(Float)
+    planet_lon: Mapped[float] = mapped_column(Float)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), default=datetime.utcnow
     )

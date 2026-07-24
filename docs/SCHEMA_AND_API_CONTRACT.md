@@ -63,12 +63,22 @@ Pseudonymous `user_id` on all patient-owned rows. Email only for magic-link auth
 
 | Entity | Key fields | Notes |
 |--------|------------|--------|
-| `Tree` | `id`, `patient_medication_id`, `species_key`, `growth_stage`, `accumulated_growth_days`, `last_press_date` | One tree per patient med |
+| `Tree` | `id`, `patient_medication_id`, `species_key`, `growth_stage`, `accumulated_growth_days`, `last_press_date`, `planet_lat`, `planet_lon` | One tree per patient med. `planet_lat`/`planet_lon`: random point on the world/planet sphere, generated once at creation (uniform distribution, not naive lat/lon draw), never recomputed — needed so the 3D planet view has a stable layout across reloads. |
 | `WorldSnapshot` | derived | Aggregated view for planet UI (not stored as source of truth in MVP) |
 
-**Growth stages (enum):** `budding` → `small` → `large` → `mature` (mature at ~6 months accumulated growth time; PRD §7.3).
+**Growth stages (enum):** `budding` → `small` → `large` → `mature`. Stage, budding sub-stage, and progress are always *derived* from `accumulated_growth_days` (never trusted as a stale stored value) via `backend/app/services/world_trees.py`:
 
-**`accumulated_growth_days`:** counts days with a valid daily press only; pauses when a day has no press — never decreases.
+| Days | Stage | Notes |
+|---|---|---|
+| 0–1 | `budding` | just planted, no sub-stage |
+| 2–3 / 4–6 / 7–9 / 10–12 / 13–14 | `budding` | sub-stage 1 / 2 / 3 / 4 / 5 (`TreeState.budding_substage`) |
+| 15–59 | `small` | continuous slow growth via `TreeState.stage_progress` |
+| 60–179 | `large` | visual asset swap at day 60; continuous growth within stage |
+| 180+ | `mature` | visual asset swap at day 180; tree itself stops growing |
+
+Past day 180, further presses no longer advance the tree's own stage — instead they feed `WorldSummary.world_expansion_level` (one unit per 30 further days per mature tree), representing the "extra saplings / planet expands" behavior in PRD §7.3. This is an internal aggregate, never rendered as a numeric score.
+
+**`accumulated_growth_days`:** counts days with a valid daily press only; pauses when a day has no press — never decreases. A gap of any length before the next press only ever advances the counter by 1 on that next press (see `test_world_growth.py::test_daily_press_pauses_not_resets_on_missed_days`).
 
 ---
 
@@ -194,3 +204,5 @@ Creates/updates SQLite `thriverx.db` (or DB from `DATABASE_URL`).
 | 2026-07-23 | Initial agreed contract for MVP parallel build |
 | 2026-07-23 | Schema agreed; Git/PR workflow (§5); med core drives first DB PR |
 | 2026-07-24 | SQLAlchemy models + Alembic; tree hook on POST `/me/medications` |
+| 2026-07-24 | Growth-stage thresholds implemented (budding sub-stages, small/large/mature days, mature-cap world expansion); `TreeState` gains `budding_substage` and `stage_progress` fields — no DB/Alembic change, `schemas/world.py` only |
+| 2026-07-24 | World view is a rotatable 3D planet (Three.js in a WebView, `mobile/src/features/world/`). Added `Tree.planet_lat`/`planet_lon` (random, persisted at creation) — **DB migration** `0bc8509f156c_add_tree_planet_placement`, needs Person 1's review before merge per §5. `TreeState` gains matching fields. Mobile: added `react-native-webview` dep (pinned `^14.0.1`, not yet installer-verified against Expo SDK 57 — run `pnpm expo install react-native-webview` once before building). Tree/planet visuals are placeholder procedural shapes (species art can be swapped in later without changing the mechanic). |

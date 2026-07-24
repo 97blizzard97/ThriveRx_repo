@@ -1,45 +1,74 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { type Locale, t } from '../../../i18n';
-import { apiGet } from '../../../lib/api';
-
-interface WorldSummary {
-  trees: unknown[];
-  world_expansion_level: number;
-}
+import { PlanetView } from '../components/PlanetView';
+import { TreeDetailSheet } from '../components/TreeDetailSheet';
+import { useDailyPress } from '../hooks/useDailyPress';
+import { useWorld } from '../hooks/useWorld';
 
 interface WorldScreenProps {
   locale: Locale;
 }
 
-/** World / trees feature — growth UI + daily press (collaborator 2). */
+/** World / trees feature — planet view + daily press (collaborator 2). */
 export function WorldScreen({ locale }: WorldScreenProps) {
-  const [treeCount, setTreeCount] = useState<number | null>(null);
+  const { world, isLoading, error, refetch } = useWorld();
+  const [selectedTreeId, setSelectedTreeId] = useState<string | null>(null);
 
-  useEffect(() => {
-    let cancelled = false;
-    apiGet<WorldSummary>('/api/v1/me/world')
-      .then((data) => {
-        if (!cancelled) setTreeCount(data.trees.length);
-      })
-      .catch(() => {
-        if (!cancelled) setTreeCount(null);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  const handlePressSuccess = useCallback(() => {
+    refetch();
+  }, [refetch]);
+  const { press, isPressing, error: pressError } = useDailyPress(handlePressSuccess);
+
+  const selectedTree = useMemo(
+    () => world?.trees.find((tree) => tree.patient_medication_id === selectedTreeId) ?? null,
+    [world, selectedTreeId],
+  );
+
+  if (isLoading) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.hint}>{t('world.loading', locale)}</Text>
+      </View>
+    );
+  }
+
+  if (error || !world) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.hint}>{t('world.apiUnknown', locale)}</Text>
+      </View>
+    );
+  }
+
+  if (world.trees.length === 0) {
+    return (
+      <View style={styles.centered}>
+        <Text style={styles.heading}>{t('world.title', locale)}</Text>
+        <Text style={styles.hint}>{t('world.empty', locale)}</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>{t('world.title', locale)}</Text>
-      <Text style={styles.hint}>{t('world.stubHint', locale)}</Text>
-      <Text style={styles.meta}>
-        {treeCount === null
-          ? t('world.apiUnknown', locale)
-          : t('world.treeCount', locale, treeCount)}
-      </Text>
+      {world.world_expansion_level > 0 ? (
+        <Text style={styles.growingBadge}>{t('world.growingHint', locale)}</Text>
+      ) : null}
+      <PlanetView trees={world.trees} onTreePress={setSelectedTreeId} />
+      <Text style={styles.rotateHint}>{t('world.rotateHint', locale)}</Text>
+      {selectedTree ? (
+        <TreeDetailSheet
+          locale={locale}
+          tree={selectedTree}
+          isPressing={isPressing}
+          pressError={pressError}
+          onPress={() => press(selectedTree.patient_medication_id)}
+          onClose={() => setSelectedTreeId(null)}
+        />
+      ) : null}
     </View>
   );
 }
@@ -47,21 +76,32 @@ export function WorldScreen({ locale }: WorldScreenProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 16,
+  },
+  centered: {
+    flex: 1,
     padding: 24,
+    justifyContent: 'center',
   },
   heading: {
     fontSize: 22,
     fontWeight: '600',
+    marginBottom: 4,
+  },
+  growingBadge: {
+    color: '#2e8b4f',
+    fontSize: 13,
     marginBottom: 8,
+  },
+  rotateHint: {
+    color: '#94a3b8',
+    fontSize: 12,
+    textAlign: 'center',
+    marginTop: 8,
   },
   hint: {
     color: '#64748b',
     fontSize: 14,
     lineHeight: 20,
-    marginBottom: 16,
-  },
-  meta: {
-    color: '#475569',
-    fontSize: 14,
   },
 });
