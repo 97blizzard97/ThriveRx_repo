@@ -1,30 +1,70 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { apiGet } from '../../../lib/api';
+import type { Locale } from '../../../i18n';
 import type { MedicineSummary } from '../../../lib/api-types';
 
-export function useMedicineSearch() {
+const DEBOUNCE_MS = 250;
+const MIN_QUERY_LENGTH = 1;
+
+export function useMedicineSearch(locale: Locale) {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<MedicineSummary[]>([]);
   const [isSearching, setIsSearching] = useState(false);
   const [error, setError] = useState<Error | null>(null);
+  const requestIdRef = useRef(0);
 
-  const search = useCallback(async (searchQuery?: string) => {
-    const q = (searchQuery ?? query).trim();
-    setIsSearching(true);
-    setError(null);
-    try {
-      const data = await apiGet<MedicineSummary[]>('/api/v1/medicines/search', {
-        q,
-      });
-      setResults(data);
-    } catch (err: unknown) {
-      setResults([]);
-      setError(err instanceof Error ? err : new Error('Search failed'));
-    } finally {
-      setIsSearching(false);
-    }
-  }, [query]);
+  const runSearch = useCallback(
+    async (searchQuery: string) => {
+      const q = searchQuery.trim();
+      const requestId = ++requestIdRef.current;
 
-  return { query, setQuery, results, isSearching, error, search };
+      if (q.length < MIN_QUERY_LENGTH) {
+        setResults([]);
+        setError(null);
+        setIsSearching(false);
+        return;
+      }
+
+      setIsSearching(true);
+      setError(null);
+      try {
+        const data = await apiGet<MedicineSummary[]>(
+          '/api/v1/medicines/search',
+          { q, locale },
+        );
+        if (requestId !== requestIdRef.current) return;
+        setResults(data);
+      } catch (err: unknown) {
+        if (requestId !== requestIdRef.current) return;
+        setResults([]);
+        setError(err instanceof Error ? err : new Error('Search failed'));
+      } finally {
+        if (requestId === requestIdRef.current) {
+          setIsSearching(false);
+        }
+      }
+    },
+    [locale],
+  );
+
+  useEffect(() => {
+    const handle = setTimeout(() => {
+      void runSearch(query);
+    }, DEBOUNCE_MS);
+    return () => clearTimeout(handle);
+  }, [query, runSearch]);
+
+  const searchNow = useCallback(() => {
+    void runSearch(query);
+  }, [query, runSearch]);
+
+  return {
+    query,
+    setQuery,
+    results,
+    isSearching,
+    error,
+    search: searchNow,
+  };
 }

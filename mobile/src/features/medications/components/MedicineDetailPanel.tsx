@@ -15,10 +15,11 @@ interface MedicineDetailPanelProps {
   detail: MedicineDetail | null;
   isLoading: boolean;
   error: Error | null;
-  isAdding: boolean;
-  addError: Error | null;
+  isAdding?: boolean;
+  addError?: Error | null;
+  showAddButton?: boolean;
   onBack: () => void;
-  onAdd: () => void;
+  onAdd?: () => void;
 }
 
 export function MedicineDetailPanel({
@@ -26,8 +27,9 @@ export function MedicineDetailPanel({
   detail,
   isLoading,
   error,
-  isAdding,
-  addError,
+  isAdding = false,
+  addError = null,
+  showAddButton = true,
   onBack,
   onAdd,
 }: MedicineDetailPanelProps) {
@@ -64,17 +66,19 @@ export function MedicineDetailPanel({
             label={t('medications.pharmacistIf', locale)}
             body={detail.check_with_pharmacist_if}
           />
-          <Pressable
-            style={[styles.addButton, isAdding && styles.addButtonDisabled]}
-            onPress={onAdd}
-            disabled={isAdding}
-          >
-            <Text style={styles.addButtonLabel}>
-              {isAdding
-                ? t('medications.adding', locale)
-                : t('medications.addToList', locale)}
-            </Text>
-          </Pressable>
+          {showAddButton && onAdd ? (
+            <Pressable
+              style={[styles.addButton, isAdding && styles.addButtonDisabled]}
+              onPress={onAdd}
+              disabled={isAdding}
+            >
+              <Text style={styles.addButtonLabel}>
+                {isAdding
+                  ? t('medications.adding', locale)
+                  : t('medications.addToList', locale)}
+              </Text>
+            </Pressable>
+          ) : null}
           {addError ? (
             <Text style={styles.error}>{t('medications.addError', locale)}</Text>
           ) : null}

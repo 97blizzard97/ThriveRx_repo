@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { apiGet } from '../../../lib/api';
+import type { Locale } from '../../../i18n';
 import type { MedicineDetail } from '../../../lib/api-types';
 
-export function useMedicineDetail(medicineId: string | null) {
+export function useMedicineDetail(medicineId: string | null, locale: Locale) {
   const [detail, setDetail] = useState<MedicineDetail | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -12,7 +13,9 @@ export function useMedicineDetail(medicineId: string | null) {
     setIsLoading(true);
     setError(null);
     try {
-      const data = await apiGet<MedicineDetail>(`/api/v1/medicines/${id}`);
+      const data = await apiGet<MedicineDetail>(`/api/v1/medicines/${id}`, {
+        locale,
+      });
       setDetail(data);
     } catch (err: unknown) {
       setDetail(null);
@@ -20,7 +23,7 @@ export function useMedicineDetail(medicineId: string | null) {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     if (!medicineId) {

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { apiGet } from '../../../lib/api';
+import type { Locale } from '../../../i18n';
 import type { MedicineDetail, PatientMedication } from '../../../lib/api-types';
 
 export function useMedicines() {
@@ -40,7 +41,10 @@ export function useMedicines() {
   return { medicines, isLoading, error, refetch };
 }
 
-export function useMyMedicationDetails(medicines: PatientMedication[]) {
+export function useMyMedicationDetails(
+  medicines: PatientMedication[],
+  locale: Locale,
+) {
   const [detailsByMedicineId, setDetailsByMedicineId] = useState<
     Record<string, MedicineDetail>
   >({});
@@ -55,7 +59,9 @@ export function useMyMedicationDetails(medicines: PatientMedication[]) {
     setIsLoading(true);
     Promise.all(
       medicines.map((item) =>
-        apiGet<MedicineDetail>(`/api/v1/medicines/${item.medicine_id}`),
+        apiGet<MedicineDetail>(`/api/v1/medicines/${item.medicine_id}`, {
+          locale,
+        }),
       ),
     )
       .then((results) => {
@@ -75,7 +81,7 @@ export function useMyMedicationDetails(medicines: PatientMedication[]) {
     return () => {
       cancelled = true;
     };
-  }, [medicines]);
+  }, [medicines, locale]);
 
   return { detailsByMedicineId, isLoading };
 }

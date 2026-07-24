@@ -1,33 +1,44 @@
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { MedicationsScreen } from '../../medications/screens/MedicationsScreen';
+import { CatalogScreen } from '../../medications/screens/CatalogScreen';
+import { MyMedicationsScreen } from '../../medications/screens/MyMedicationsScreen';
 import { WorldScreen } from '../../world/screens/WorldScreen';
 import { type Locale, t } from '../../../i18n';
 
-export type AppTab = 'medications' | 'world';
+export type AppTab = 'search' | 'myList' | 'world';
 
 interface AppShellProps {
   locale?: Locale;
 }
 
 export function AppShell({ locale = 'en' }: AppShellProps) {
-  const [tab, setTab] = useState<AppTab>('medications');
+  const [tab, setTab] = useState<AppTab>('search');
 
   return (
     <View style={styles.root}>
       <View style={styles.content}>
-        {tab === 'medications' ? (
-          <MedicationsScreen locale={locale} />
+        {tab === 'search' ? (
+          <CatalogScreen locale={locale} />
+        ) : tab === 'myList' ? (
+          <MyMedicationsScreen
+            locale={locale}
+            onGoToSearch={() => setTab('search')}
+          />
         ) : (
           <WorldScreen locale={locale} />
         )}
       </View>
       <View style={styles.tabBar}>
         <TabButton
-          label={t('nav.medications', locale)}
-          active={tab === 'medications'}
-          onPress={() => setTab('medications')}
+          label={t('nav.search', locale)}
+          active={tab === 'search'}
+          onPress={() => setTab('search')}
+        />
+        <TabButton
+          label={t('nav.myList', locale)}
+          active={tab === 'myList'}
+          onPress={() => setTab('myList')}
         />
         <TabButton
           label={t('nav.world', locale)}

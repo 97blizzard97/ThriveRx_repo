@@ -15,15 +15,15 @@ export function useAddMedication(onSuccess?: () => void) {
       setIsAdding(true);
       setError(null);
       try {
-        await apiPost<PatientMedication, PatientMedicationCreate>(
-          '/api/v1/me/medications',
-          payload,
-        );
+        const created = await apiPost<
+          PatientMedication,
+          PatientMedicationCreate
+        >('/api/v1/me/medications', payload);
         onSuccess?.();
-        return true;
+        return created;
       } catch (err: unknown) {
         setError(err instanceof Error ? err : new Error('Add failed'));
-        return false;
+        return null;
       } finally {
         setIsAdding(false);
       }
