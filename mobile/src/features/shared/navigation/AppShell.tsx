@@ -26,7 +26,10 @@ export function AppShell({ locale = 'en' }: AppShellProps) {
             onGoToSearch={() => setTab('search')}
           />
         ) : (
-          <WorldScreen locale={locale} />
+          <WorldScreen
+            locale={locale}
+            onGoToSearch={() => setTab('search')}
+          />
         )}
       </View>
       <View style={styles.tabBar}>

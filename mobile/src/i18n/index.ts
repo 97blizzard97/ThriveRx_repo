@@ -83,7 +83,30 @@ type MessageKey =
   | 'world.title'
   | 'world.stubHint'
   | 'world.apiUnknown'
-  | 'world.treeCount';
+  | 'world.treeCount'
+  | 'world.loadError'
+  | 'world.retry'
+  | 'world.empty'
+  | 'world.goToSearch'
+  | 'world.goToSearchHint'
+  | 'world.growthLead'
+  | 'world.growthDays'
+  | 'world.tapTreeHint'
+  | 'world.canPressHint'
+  | 'world.pressCta'
+  | 'world.pressing'
+  | 'world.alreadyPressed'
+  | 'world.pauseNote'
+  | 'world.close'
+  | 'world.stage.budding'
+  | 'world.stage.small'
+  | 'world.stage.large'
+  | 'world.stage.mature'
+  | 'world.species.oak'
+  | 'world.species.maple'
+  | 'world.species.birch'
+  | 'world.species.willow'
+  | 'world.species.cedar';
 
 const messages: Record<Locale, Record<MessageKey, string>> = {
   en: {
@@ -177,6 +200,32 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
       'Trees and daily press live here (world module). Growth pauses, never punishes.',
     'world.apiUnknown': 'Could not load world (is the backend running?)',
     'world.treeCount': '{n} trees',
+    'world.loadError': 'Could not load your world. Is the backend running?',
+    'world.retry': 'Try again',
+    'world.empty':
+      'Add a medicine on Search to plant your first tree.',
+    'world.goToSearch': 'Go to Search',
+    'world.goToSearchHint': 'Open the Search tab to add a medicine.',
+    'world.growthLead': '{n} trees growing here',
+    'world.growthDays': '{n} days grown',
+    'world.tapTreeHint': 'Tap a tree to see how it is growing',
+    'world.canPressHint':
+      'You can check in here today — or mark Taken on My list.',
+    'world.pressCta': "I'm here today",
+    'world.pressing': 'Growing…',
+    'world.alreadyPressed': 'Already grown today — see you tomorrow.',
+    'world.pauseNote':
+      'Missed days only pause growth time. Your tree never shrinks or wilts.',
+    'world.close': 'Close',
+    'world.stage.budding': 'Stage: budding',
+    'world.stage.small': 'Stage: small',
+    'world.stage.large': 'Stage: large',
+    'world.stage.mature': 'Stage: mature',
+    'world.species.oak': 'Oak',
+    'world.species.maple': 'Maple',
+    'world.species.birch': 'Birch',
+    'world.species.willow': 'Willow',
+    'world.species.cedar': 'Cedar',
   },
   zh: {
     'app.title': 'ThriveRx',
@@ -263,6 +312,29 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'world.stubHint': '树木与每日确认（世界模块）。生长会暂停，不会惩罚。',
     'world.apiUnknown': '无法加载世界（后端是否已启动？）',
     'world.treeCount': '{n} 棵树',
+    'world.loadError': '无法加载世界。后端是否已启动？',
+    'world.retry': '重试',
+    'world.empty': '在搜索页添加药物，种下第一棵树。',
+    'world.goToSearch': '前往搜索',
+    'world.goToSearchHint': '打开搜索标签页添加药物。',
+    'world.growthLead': '这里有 {n} 棵树在生长',
+    'world.growthDays': '已生长 {n} 天',
+    'world.tapTreeHint': '点按树木查看生长情况',
+    'world.canPressHint': '今天可以在此签到 — 或在「我的清单」标记已服用。',
+    'world.pressCta': '我今天来了',
+    'world.pressing': '生长中…',
+    'world.alreadyPressed': '今天已成长 — 明天见。',
+    'world.pauseNote': '错过的日子只会暂停生长时间。树木不会缩小或枯萎。',
+    'world.close': '关闭',
+    'world.stage.budding': '阶段：萌芽',
+    'world.stage.small': '阶段：幼树',
+    'world.stage.large': '阶段：大树',
+    'world.stage.mature': '阶段：成熟',
+    'world.species.oak': '橡树',
+    'world.species.maple': '枫树',
+    'world.species.birch': '桦树',
+    'world.species.willow': '柳树',
+    'world.species.cedar': '雪松',
   },
   vi: {
     'app.title': 'ThriveRx',
@@ -356,6 +428,31 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
       'Cây và xác nhận hàng ngày (module thế giới). Tăng trưởng tạm dừng, không phạt.',
     'world.apiUnknown': 'Không tải được thế giới (backend đã chạy chưa?)',
     'world.treeCount': '{n} cây',
+    'world.loadError': 'Không tải được thế giới. Backend đã chạy chưa?',
+    'world.retry': 'Thử lại',
+    'world.empty': 'Thêm thuốc ở Tìm kiếm để trồng cây đầu tiên.',
+    'world.goToSearch': 'Đến Tìm kiếm',
+    'world.goToSearchHint': 'Mở tab Tìm kiếm để thêm thuốc.',
+    'world.growthLead': '{n} cây đang lớn ở đây',
+    'world.growthDays': 'Đã lớn {n} ngày',
+    'world.tapTreeHint': 'Chạm vào cây để xem sự phát triển',
+    'world.canPressHint':
+      'Bạn có thể điểm danh ở đây hôm nay — hoặc đánh dấu Đã uống ở Danh sách.',
+    'world.pressCta': 'Tôi ở đây hôm nay',
+    'world.pressing': 'Đang lớn…',
+    'world.alreadyPressed': 'Hôm nay đã lớn rồi — hẹn ngày mai.',
+    'world.pauseNote':
+      'Ngày bỏ lỡ chỉ tạm dừng thời gian lớn. Cây không bao giờ teo hay héo.',
+    'world.close': 'Đóng',
+    'world.stage.budding': 'Giai đoạn: nảy mầm',
+    'world.stage.small': 'Giai đoạn: nhỏ',
+    'world.stage.large': 'Giai đoạn: lớn',
+    'world.stage.mature': 'Giai đoạn: trưởng thành',
+    'world.species.oak': 'Sồi',
+    'world.species.maple': 'Phong',
+    'world.species.birch': 'Bạch dương',
+    'world.species.willow': 'Liễu',
+    'world.species.cedar': 'Tuyết tùng',
   },
 };
 

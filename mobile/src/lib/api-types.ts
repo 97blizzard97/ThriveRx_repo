@@ -26,6 +26,11 @@ export interface WorldSummary {
   world_expansion_level: number;
 }
 
+export interface DailyPressResponse {
+  tree: TreeState;
+  pressed: boolean;
+}
+
 export interface CommonStrength {
   amount: number;
   unit: DoseUnit | string;
