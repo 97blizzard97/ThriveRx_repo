@@ -5,7 +5,14 @@ from sqlalchemy.orm import Session
 
 from app.constants import STUB_USER_ID
 from app.database import get_db
-from app.schemas.world import DailyPressResponse, TreeState, WorldSummary
+from app.schemas.world import (
+    DailyPressResponse,
+    DemoAdvanceRequest,
+    DemoAdvanceResponse,
+    DemoResetResponse,
+    TreeState,
+    WorldSummary,
+)
 from app.services import world_trees as world_service
 from app.services.users import ensure_stub_user
 
@@ -49,3 +56,28 @@ def daily_press(
     if result is None:
         raise HTTPException(status_code=404, detail="Tree not found")
     return result
+
+
+@router.post(
+    "/world/demo/advance",
+    response_model=DemoAdvanceResponse,
+    summary="Demo-only: fast-forward garden growth",
+)
+def demo_advance(
+    body: DemoAdvanceRequest,
+    db: Session = Depends(get_db),
+) -> DemoAdvanceResponse:
+    """Portfolio demo only — adds growth days to all trees. Not clinical."""
+    ensure_stub_user(db)
+    return world_service.demo_advance_growth(db, STUB_USER_ID, body.days)
+
+
+@router.post(
+    "/world/demo/reset",
+    response_model=DemoResetResponse,
+    summary="Demo-only: reset garden to budding",
+)
+def demo_reset(db: Session = Depends(get_db)) -> DemoResetResponse:
+    """Portfolio demo only — sets every tree to budding / 0 days. Keeps species."""
+    ensure_stub_user(db)
+    return world_service.demo_reset_growth(db, STUB_USER_ID)

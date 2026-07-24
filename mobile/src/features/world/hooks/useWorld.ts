@@ -15,7 +15,8 @@ export function useWorld() {
 
   useEffect(() => {
     let cancelled = false;
-    setIsLoading(true);
+    // Keep garden visible on refetch (e.g. demo advance / daily press).
+    if (refreshKey === 0) setIsLoading(true);
     apiGet<WorldSummary>('/api/v1/me/world')
       .then((data) => {
         if (!cancelled) {

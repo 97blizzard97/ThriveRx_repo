@@ -32,3 +32,24 @@ class DailyPressResponse(BaseModel):
     pressed: bool = Field(
         description="False if already pressed today (idempotent response)",
     )
+
+
+class DemoAdvanceRequest(BaseModel):
+    """Demo-only portfolio fast-forward — not a clinical or points API."""
+
+    days: int = Field(
+        ge=1,
+        le=180,
+        description="Engagement days to add to every tree (clamped 1–180)",
+    )
+
+
+class DemoAdvanceResponse(BaseModel):
+    world: WorldSummary
+    days_added: int = Field(ge=1, le=180)
+
+
+class DemoResetResponse(BaseModel):
+    """Demo-only garden reset — not a clinical or points API."""
+
+    world: WorldSummary

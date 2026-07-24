@@ -92,12 +92,24 @@ type MessageKey =
   | 'world.growthLead'
   | 'world.growthDays'
   | 'world.tapTreeHint'
+  | 'world.colorLegend'
+  | 'world.dragHint'
   | 'world.canPressHint'
   | 'world.pressCta'
   | 'world.pressing'
   | 'world.alreadyPressed'
   | 'world.pauseNote'
   | 'world.close'
+  | 'world.demo.label'
+  | 'world.demo.title'
+  | 'world.demo.hint'
+  | 'world.demo.daysMark'
+  | 'world.demo.apply'
+  | 'world.demo.note'
+  | 'world.demo.reset'
+  | 'world.demo.resetConfirmTitle'
+  | 'world.demo.resetConfirmMessage'
+  | 'world.demo.resetCancel'
   | 'world.stage.budding'
   | 'world.stage.small'
   | 'world.stage.large'
@@ -209,6 +221,8 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'world.growthLead': '{n} trees growing here',
     'world.growthDays': '{n} days grown',
     'world.tapTreeHint': 'Tap a tree to see how it is growing',
+    'world.colorLegend': 'Each colour is a medicine',
+    'world.dragHint': 'Drag to turn your little planet',
     'world.canPressHint':
       'You can check in here today — or mark Taken on My list.',
     'world.pressCta': "I'm here today",
@@ -217,6 +231,18 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'world.pauseNote':
       'Missed days only pause growth time. Your tree never shrinks or wilts.',
     'world.close': 'Close',
+    'world.demo.label': 'Demo',
+    'world.demo.title': 'Fast-forward garden',
+    'world.demo.hint': 'Simulate growth days for the portfolio demo.',
+    'world.demo.daysMark': '{n} days',
+    'world.demo.apply': 'Add {n} days to every tree',
+    'world.demo.note':
+      'Real growth comes from daily Taken or “I’m here today” — this control is demo-only.',
+    'world.demo.reset': 'Reset garden',
+    'world.demo.resetConfirmTitle': 'Reset garden?',
+    'world.demo.resetConfirmMessage':
+      'All trees return to budding with 0 growth days. Species stay the same. Demo only.',
+    'world.demo.resetCancel': 'Cancel',
     'world.stage.budding': 'Stage: budding',
     'world.stage.small': 'Stage: small',
     'world.stage.large': 'Stage: large',
@@ -320,12 +346,26 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'world.growthLead': '这里有 {n} 棵树在生长',
     'world.growthDays': '已生长 {n} 天',
     'world.tapTreeHint': '点按树木查看生长情况',
+    'world.colorLegend': '每种颜色代表一种药物',
+    'world.dragHint': '拖动旋转你的小星球',
     'world.canPressHint': '今天可以在此签到 — 或在「我的清单」标记已服用。',
     'world.pressCta': '我今天来了',
     'world.pressing': '生长中…',
     'world.alreadyPressed': '今天已成长 — 明天见。',
     'world.pauseNote': '错过的日子只会暂停生长时间。树木不会缩小或枯萎。',
     'world.close': '关闭',
+    'world.demo.label': '演示',
+    'world.demo.title': '快进花园',
+    'world.demo.hint': '为作品集演示模拟生长天数。',
+    'world.demo.daysMark': '{n} 天',
+    'world.demo.apply': '为每棵树增加 {n} 天',
+    'world.demo.note':
+      '真实生长来自每日「已服用」或「我今天来了」— 此控件仅用于演示。',
+    'world.demo.reset': '重置花园',
+    'world.demo.resetConfirmTitle': '重置花园？',
+    'world.demo.resetConfirmMessage':
+      '所有树木将回到萌芽、生长天数为 0。树种保持不变。仅用于演示。',
+    'world.demo.resetCancel': '取消',
     'world.stage.budding': '阶段：萌芽',
     'world.stage.small': '阶段：幼树',
     'world.stage.large': '阶段：大树',
@@ -436,6 +476,8 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'world.growthLead': '{n} cây đang lớn ở đây',
     'world.growthDays': 'Đã lớn {n} ngày',
     'world.tapTreeHint': 'Chạm vào cây để xem sự phát triển',
+    'world.colorLegend': 'Mỗi màu là một loại thuốc',
+    'world.dragHint': 'Kéo để xoay hành tinh nhỏ',
     'world.canPressHint':
       'Bạn có thể điểm danh ở đây hôm nay — hoặc đánh dấu Đã uống ở Danh sách.',
     'world.pressCta': 'Tôi ở đây hôm nay',
@@ -444,6 +486,18 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'world.pauseNote':
       'Ngày bỏ lỡ chỉ tạm dừng thời gian lớn. Cây không bao giờ teo hay héo.',
     'world.close': 'Đóng',
+    'world.demo.label': 'Demo',
+    'world.demo.title': 'Tua nhanh khu vườn',
+    'world.demo.hint': 'Mô phỏng ngày tăng trưởng cho bản demo portfolio.',
+    'world.demo.daysMark': '{n} ngày',
+    'world.demo.apply': 'Thêm {n} ngày cho mọi cây',
+    'world.demo.note':
+      'Tăng trưởng thật đến từ Đã uống hàng ngày hoặc “Tôi ở đây hôm nay” — điều khiển này chỉ dùng demo.',
+    'world.demo.reset': 'Đặt lại khu vườn',
+    'world.demo.resetConfirmTitle': 'Đặt lại khu vườn?',
+    'world.demo.resetConfirmMessage':
+      'Mọi cây trở về nảy mầm với 0 ngày tăng trưởng. Loài cây giữ nguyên. Chỉ dùng demo.',
+    'world.demo.resetCancel': 'Hủy',
     'world.stage.budding': 'Giai đoạn: nảy mầm',
     'world.stage.small': 'Giai đoạn: nhỏ',
     'world.stage.large': 'Giai đoạn: lớn',

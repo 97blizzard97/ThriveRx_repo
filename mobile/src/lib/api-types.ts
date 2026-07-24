@@ -31,6 +31,17 @@ export interface DailyPressResponse {
   pressed: boolean;
 }
 
+/** Demo-only portfolio fast-forward — not clinical. */
+export interface DemoAdvanceResponse {
+  world: WorldSummary;
+  days_added: number;
+}
+
+/** Demo-only garden reset to budding / 0 days — not clinical. */
+export interface DemoResetResponse {
+  world: WorldSummary;
+}
+
 export interface CommonStrength {
   amount: number;
   unit: DoseUnit | string;

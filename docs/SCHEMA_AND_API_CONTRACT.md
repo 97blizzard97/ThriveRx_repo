@@ -67,7 +67,18 @@ Pseudonymous `user_id` on all patient-owned rows. Email only for magic-link auth
 | `Tree` | `id`, `patient_medication_id`, `species_key`, `growth_stage`, `accumulated_growth_days`, `last_press_date` | One tree per patient med |
 | `WorldSnapshot` | derived | Aggregated view for planet UI (not stored as source of truth in MVP) |
 
-**Growth stages (enum):** `budding` → `small` → `large` → `mature` (mature at ~6 months accumulated growth time; PRD §7.3).
+**Growth stages (enum):** `budding` → `small` → `large` → `mature`.
+
+**Stage mapping from `accumulated_growth_days`** (shared helper `stage_for_growth_days`; used by daily press and demo advance):
+
+| Days | Stage |
+|------|--------|
+| 0–13 | `budding` |
+| 14–59 | `small` |
+| 60–179 | `large` |
+| 180+ | `mature` |
+
+Mature at ~6 months accumulated growth time (PRD §7.3).
 
 **`accumulated_growth_days`:** counts days with a valid daily press only; pauses when a day has no press — never decreases.
 
@@ -114,7 +125,9 @@ Auth: `Authorization: Bearer <session_token>` unless noted. Stubs may skip auth 
 | GET | `/api/v1/me/world` | Planet/world summary + tree placements |
 | GET | `/api/v1/me/trees` | All trees for user |
 | GET | `/api/v1/me/trees/{patient_medication_id}` | Single tree state |
-| POST | `/api/v1/me/trees/{patient_medication_id}/daily-press` | Once per day per med; returns updated tree |
+| POST | `/api/v1/me/trees/{patient_medication_id}/daily-press` | Once per day per med; returns updated tree (also advances `growth_stage` from days) |
+| POST | `/api/v1/me/world/demo/advance` | **Demo-only** portfolio fast-forward: body `{ days: int }` (1–180); adds that many days to **every** tree and refreshes stages / `world_expansion_level`. Not clinical; never call this “points.” |
+| POST | `/api/v1/me/world/demo/reset` | **Demo-only** portfolio reset: sets **every** tree to `accumulated_growth_days=0`, `growth_stage=budding`. Keeps species and tree rows (does not delete). Not clinical; never call this “points” or wilt. |
 
 ### Shared (later)
 
@@ -215,3 +228,5 @@ Creates/updates SQLite `thriverx.db` (or DB from `DATABASE_URL`).
 | 2026-07-24 | PatientMedication dosing fields + Medicine.common_strengths; reminder defaults on add; Search / My list / World tabs |
 | 2026-07-24 | PATCH `/me/medications/{id}` for dosing edits; DELETE cascades tree + reminder; My list edit/remove UI |
 | 2026-07-24 | `DoseEvent` + `/me/doses/today` + mark slot; all-Taken → daily-press (no points); custom times via reminders PUT; list includes `times_local` |
+| 2026-07-25 | Demo-only `POST /me/world/demo/advance`; `stage_for_growth_days` shared by press + demo (budding/small/large/mature thresholds) |
+| 2026-07-25 | Demo-only `POST /me/world/demo/reset` — budding / 0 days for every tree (keeps species) |
