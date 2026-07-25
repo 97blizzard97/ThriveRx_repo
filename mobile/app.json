@@ -20,6 +20,15 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow ThriveRx to access photos so you can scan a script or medicine label.",
+          "cameraPermission": "Allow ThriveRx to use the camera so you can photograph a script or medicine label."
+        }
+      ]
+    ]
   }
 }

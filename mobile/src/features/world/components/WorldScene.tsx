@@ -300,7 +300,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   skyStack: {
-    ...StyleSheet.absoluteFill,
+    ...StyleSheet.absoluteFillObject,
   },
   skyBand: {
     width: '100%',
@@ -380,7 +380,7 @@ const styles = StyleSheet.create({
     width: '18%',
   },
   limbDarken: {
-    ...StyleSheet.absoluteFill,
+    ...StyleSheet.absoluteFillObject,
     borderColor: 'rgba(15, 23, 42, 0.2)',
     borderRadius: PLANET_SIZE / 2,
     borderWidth: 12,
@@ -403,7 +403,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   emptyOverlay: {
-    ...StyleSheet.absoluteFill,
+    ...StyleSheet.absoluteFillObject,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 28,

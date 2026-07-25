@@ -100,7 +100,7 @@ Auth: `Authorization: Bearer <session_token>` unless noted. Stubs may skip auth 
 | POST | `/api/v1/me/medications` | Add to list `{ medicine_id, form, dose_amount, dose_unit, frequency_code, with_food?, indication_key? }` — also creates `Reminder` with default `times_local` from frequency and a world tree |
 | PATCH | `/api/v1/me/medications/{patient_medication_id}` | Update dosing `{ form, dose_amount, dose_unit, frequency_code, with_food? }` — if `frequency_code` changes, **reset** Reminder `times_local` to the default mapping |
 | DELETE | `/api/v1/me/medications/{patient_medication_id}` | Remove from list (cascades related tree + reminder + dose events) |
-| POST | `/api/v1/scan/script` | `multipart/form-data` image → matches + confirm payload |
+| POST | `/api/v1/scan/script` | `multipart/form-data`: optional `file` (image) and/or `image_base64` (data-URL or raw base64; preferred for web/Cloudflare) + optional `text_hint` → `{ extracted_text, matches[] }`. OCR runs **backend-only** when `GOOGLE_API_KEY` (Gemini / AI Studio) or `OPENAI_API_KEY` is set; without a key, `text_hint` still fuzzy-matches the curated catalog. Mobile confirms a match then uses normal add-to-list flow. |
 | GET | `/api/v1/me/reminders` | List reminders |
 | PUT | `/api/v1/me/reminders/{patient_medication_id}` | Set custom `times_local` (schedule prompts only) |
 | GET | `/api/v1/me/doses/today` | Per med: today’s slots from Reminder × DoseEvent statuses + medicine display name; `can_grow_today` soft hint only |
@@ -212,7 +212,7 @@ Creates/updates SQLite `thriverx.db` (or DB from `DATABASE_URL`).
 ## 6. Open items (fill in as you go)
 
 - [ ] Magic-link email provider (dev: log link to console?)
-- [ ] OCR provider for script scan (backend-only API key)
+- [x] OCR provider for script scan (optional `GOOGLE_API_KEY` Gemini / `OPENAI_API_KEY`; else `text_hint` fuzzy match)
 - [ ] Exact budding sub-stages (PRD open question) — UI-only until decided
 - [ ] TypeScript types: generate from OpenAPI (`/openapi.json`) or hand-maintain `mobile/src/lib/api-types.ts`
 
@@ -230,3 +230,4 @@ Creates/updates SQLite `thriverx.db` (or DB from `DATABASE_URL`).
 | 2026-07-24 | `DoseEvent` + `/me/doses/today` + mark slot; all-Taken → daily-press (no points); custom times via reminders PUT; list includes `times_local` |
 | 2026-07-25 | Demo-only `POST /me/world/demo/advance`; `stage_for_growth_days` shared by press + demo (budding/small/large/mature thresholds) |
 | 2026-07-25 | Demo-only `POST /me/world/demo/reset` — budding / 0 days for every tree (keeps species) |
+| 2026-07-25 | Scan: `POST /scan/script` fuzzy-matches catalog from OCR and/or `text_hint`; optional Gemini (AI Studio) or OpenAI vision OCR |

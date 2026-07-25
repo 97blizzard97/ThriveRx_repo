@@ -10,6 +10,12 @@ class Settings(BaseSettings):
 
     database_url: str = "sqlite:///./thriverx.db"
     cors_origins: str = "*"
+    # Optional: Google AI Studio key for Gemini vision OCR (preferred).
+    google_api_key: str | None = None
+    google_vision_model: str = "gemini-3.1-flash-lite"
+    # Optional fallback: OpenAI vision OCR.
+    openai_api_key: str | None = None
+    openai_vision_model: str = "gpt-4o-mini"
 
     @property
     def cors_origin_list(self) -> list[str]:

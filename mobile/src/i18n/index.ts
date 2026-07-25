@@ -2,6 +2,7 @@ export type Locale = 'en' | 'zh' | 'vi';
 
 type MessageKey =
   | 'app.title'
+  | 'app.subtitle'
   | 'language.label'
   | 'disclaimer.general'
   | 'nav.search'
@@ -20,6 +21,18 @@ type MessageKey =
   | 'medications.searchButton'
   | 'medications.searchError'
   | 'medications.searchEmpty'
+  | 'scan.title'
+  | 'scan.hint'
+  | 'scan.pickPhoto'
+  | 'scan.takePhoto'
+  | 'scan.textHintLabel'
+  | 'scan.textHintPlaceholder'
+  | 'scan.submit'
+  | 'scan.scanning'
+  | 'scan.error'
+  | 'scan.empty'
+  | 'scan.extracted'
+  | 'scan.confidence'
   | 'medications.tapForDetail'
   | 'medications.back'
   | 'medications.detailError'
@@ -123,9 +136,10 @@ type MessageKey =
 const messages: Record<Locale, Record<MessageKey, string>> = {
   en: {
     'app.title': 'ThriveRx',
+    'app.subtitle': 'Clear medicine info · a world that grows with you',
     'language.label': 'Language',
     'disclaimer.general':
-      'General information only — always confirm with your doctor or pharmacist.',
+      'Not medical advice. For educational and demo use only — always confirm with your doctor or pharmacist.',
     'nav.search': 'Search',
     'nav.myList': 'My list',
     'nav.world': 'World',
@@ -143,6 +157,21 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'medications.searchButton': 'Search',
     'medications.searchError': 'Search failed. Check the backend is running.',
     'medications.searchEmpty': 'No matches — try another name.',
+    'scan.title': 'Scan a script',
+    'scan.hint':
+      'Photo an Australian printed script or pack label — we read medicine names automatically (with your API key), then match the catalog. You can still type a name if needed.',
+    'scan.pickPhoto': 'Choose photo',
+    'scan.takePhoto': 'Take photo',
+    'scan.textHintLabel': 'Backup: type a name if the photo is unclear',
+    'scan.textHintPlaceholder': 'e.g. metformin, Diabex, Ventolin',
+    'scan.submit': 'Scan again',
+    'scan.scanning': 'Reading script…',
+    'scan.error':
+      'Scan failed. Check your connection, try again, or type the medicine name below.',
+    'scan.empty':
+      'No catalog matches — try a clearer photo, or type a generic/brand name.',
+    'scan.extracted': 'Read from script',
+    'scan.confidence': '{n}% match — tap to review',
     'medications.tapForDetail': 'Tap for plain-language info',
     'medications.back': '← Back',
     'medications.detailError': 'Could not load medicine details.',
@@ -255,8 +284,10 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
   },
   zh: {
     'app.title': 'ThriveRx',
+    'app.subtitle': '易懂用药说明 · 随你一同成长的世界',
     'language.label': '语言',
-    'disclaimer.general': '仅供参考 — 请务必向医生或药剂师确认。',
+    'disclaimer.general':
+      '非医疗建议，仅供教育与演示用途 — 请务必向医生或药剂师确认。',
     'nav.search': '搜索',
     'nav.myList': '我的清单',
     'nav.world': '世界',
@@ -273,6 +304,19 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'medications.searchButton': '搜索',
     'medications.searchError': '搜索失败。请检查后端是否运行。',
     'medications.searchEmpty': '无匹配结果 — 请尝试其他名称。',
+    'scan.title': '扫描处方',
+    'scan.hint':
+      '拍摄澳大利亚打印处方或药盒 — 配置 API 密钥后会自动识别药名并匹配目录。不清时可手动输入。',
+    'scan.pickPhoto': '选择照片',
+    'scan.takePhoto': '拍照',
+    'scan.textHintLabel': '备用：照片不清时输入药名',
+    'scan.textHintPlaceholder': '例如 metformin、Diabex、Ventolin',
+    'scan.submit': '重新扫描',
+    'scan.scanning': '正在识别处方…',
+    'scan.error': '扫描失败。请检查网络后重试，或在下方输入药名。',
+    'scan.empty': '目录无匹配 — 换更清晰的照片，或输入通用名/品牌名。',
+    'scan.extracted': '从处方识别',
+    'scan.confidence': '{n}% 匹配 — 点按查看',
     'medications.tapForDetail': '点击查看通俗说明',
     'medications.back': '← 返回',
     'medications.detailError': '无法加载药物详情。',
@@ -378,9 +422,10 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
   },
   vi: {
     'app.title': 'ThriveRx',
+    'app.subtitle': 'Thông tin thuốc rõ ràng · thế giới lớn cùng bạn',
     'language.label': 'Ngôn ngữ',
     'disclaimer.general':
-      'Chỉ mang tính tham khảo — luôn xác nhận với bác sĩ hoặc dược sĩ.',
+      'Không phải lời khuyên y tế. Chỉ dùng cho mục đích giáo dục và demo — luôn xác nhận với bác sĩ hoặc dược sĩ.',
     'nav.search': 'Tìm kiếm',
     'nav.myList': 'Danh sách',
     'nav.world': 'Thế giới',
@@ -399,6 +444,21 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'medications.searchButton': 'Tìm',
     'medications.searchError': 'Tìm kiếm thất bại. Kiểm tra backend.',
     'medications.searchEmpty': 'Không có kết quả — thử tên khác.',
+    'scan.title': 'Quét đơn thuốc',
+    'scan.hint':
+      'Chụp đơn in kiểu Úc hoặc nhãn thuốc — có API key sẽ tự đọc tên thuốc rồi khớp danh mục. Có thể gõ thêm nếu ảnh mờ.',
+    'scan.pickPhoto': 'Chọn ảnh',
+    'scan.takePhoto': 'Chụp ảnh',
+    'scan.textHintLabel': 'Dự phòng: gõ tên nếu ảnh không rõ',
+    'scan.textHintPlaceholder': 'vd. metformin, Diabex, Ventolin',
+    'scan.submit': 'Quét lại',
+    'scan.scanning': 'Đang đọc đơn…',
+    'scan.error':
+      'Quét thất bại. Kiểm tra kết nối, thử lại, hoặc gõ tên thuốc bên dưới.',
+    'scan.empty':
+      'Không khớp danh mục — thử ảnh rõ hơn, hoặc gõ tên gốc/biệt dược.',
+    'scan.extracted': 'Đọc từ đơn',
+    'scan.confidence': '{n}% khớp — chạm để xem',
     'medications.tapForDetail': 'Chạm để xem thông tin dễ hiểu',
     'medications.back': '← Quay lại',
     'medications.detailError': 'Không tải được chi tiết thuốc.',

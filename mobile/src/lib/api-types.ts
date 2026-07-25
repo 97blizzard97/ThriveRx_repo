@@ -140,3 +140,14 @@ export const FREQUENCY_DEFAULT_TIMES: Record<FrequencyCode, string[]> = {
 export function defaultTimesForFrequency(code: FrequencyCode): string[] {
   return [...FREQUENCY_DEFAULT_TIMES[code]];
 }
+
+export interface ScanMatch {
+  medicine_id: string;
+  display_name: string;
+  confidence: number;
+}
+
+export interface ScanScriptResponse {
+  extracted_text: string;
+  matches: ScanMatch[];
+}
