@@ -31,6 +31,17 @@ export interface DailyPressResponse {
   pressed: boolean;
 }
 
+/** Demo-only portfolio fast-forward — not clinical. */
+export interface DemoAdvanceResponse {
+  world: WorldSummary;
+  days_added: number;
+}
+
+/** Demo-only garden reset to budding / 0 days — not clinical. */
+export interface DemoResetResponse {
+  world: WorldSummary;
+}
+
 export interface CommonStrength {
   amount: number;
   unit: DoseUnit | string;
@@ -128,4 +139,15 @@ export const FREQUENCY_DEFAULT_TIMES: Record<FrequencyCode, string[]> = {
 
 export function defaultTimesForFrequency(code: FrequencyCode): string[] {
   return [...FREQUENCY_DEFAULT_TIMES[code]];
+}
+
+export interface ScanMatch {
+  medicine_id: string;
+  display_name: string;
+  confidence: number;
+}
+
+export interface ScanScriptResponse {
+  extracted_text: string;
+  matches: ScanMatch[];
 }

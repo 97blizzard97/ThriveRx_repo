@@ -2,6 +2,7 @@ export type Locale = 'en' | 'zh' | 'vi';
 
 type MessageKey =
   | 'app.title'
+  | 'app.subtitle'
   | 'language.label'
   | 'disclaimer.general'
   | 'nav.search'
@@ -20,6 +21,18 @@ type MessageKey =
   | 'medications.searchButton'
   | 'medications.searchError'
   | 'medications.searchEmpty'
+  | 'scan.title'
+  | 'scan.hint'
+  | 'scan.pickPhoto'
+  | 'scan.takePhoto'
+  | 'scan.textHintLabel'
+  | 'scan.textHintPlaceholder'
+  | 'scan.submit'
+  | 'scan.scanning'
+  | 'scan.error'
+  | 'scan.empty'
+  | 'scan.extracted'
+  | 'scan.confidence'
   | 'medications.tapForDetail'
   | 'medications.back'
   | 'medications.detailError'
@@ -92,12 +105,24 @@ type MessageKey =
   | 'world.growthLead'
   | 'world.growthDays'
   | 'world.tapTreeHint'
+  | 'world.colorLegend'
+  | 'world.dragHint'
   | 'world.canPressHint'
   | 'world.pressCta'
   | 'world.pressing'
   | 'world.alreadyPressed'
   | 'world.pauseNote'
   | 'world.close'
+  | 'world.demo.label'
+  | 'world.demo.title'
+  | 'world.demo.hint'
+  | 'world.demo.daysMark'
+  | 'world.demo.apply'
+  | 'world.demo.note'
+  | 'world.demo.reset'
+  | 'world.demo.resetConfirmTitle'
+  | 'world.demo.resetConfirmMessage'
+  | 'world.demo.resetCancel'
   | 'world.stage.budding'
   | 'world.stage.small'
   | 'world.stage.large'
@@ -111,9 +136,10 @@ type MessageKey =
 const messages: Record<Locale, Record<MessageKey, string>> = {
   en: {
     'app.title': 'ThriveRx',
+    'app.subtitle': 'Clear medicine info · a world that grows with you',
     'language.label': 'Language',
     'disclaimer.general':
-      'General information only — always confirm with your doctor or pharmacist.',
+      'Not medical advice. For educational and demo use only — always confirm with your doctor or pharmacist.',
     'nav.search': 'Search',
     'nav.myList': 'My list',
     'nav.world': 'World',
@@ -131,6 +157,21 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'medications.searchButton': 'Search',
     'medications.searchError': 'Search failed. Check the backend is running.',
     'medications.searchEmpty': 'No matches — try another name.',
+    'scan.title': 'Scan a script',
+    'scan.hint':
+      'Photo an Australian printed script or pack label — we read medicine names automatically (with your API key), then match the catalog. You can still type a name if needed.',
+    'scan.pickPhoto': 'Choose photo',
+    'scan.takePhoto': 'Take photo',
+    'scan.textHintLabel': 'Backup: type a name if the photo is unclear',
+    'scan.textHintPlaceholder': 'e.g. metformin, Diabex, Ventolin',
+    'scan.submit': 'Scan again',
+    'scan.scanning': 'Reading script…',
+    'scan.error':
+      'Scan failed. Check your connection, try again, or type the medicine name below.',
+    'scan.empty':
+      'No catalog matches — try a clearer photo, or type a generic/brand name.',
+    'scan.extracted': 'Read from script',
+    'scan.confidence': '{n}% match — tap to review',
     'medications.tapForDetail': 'Tap for plain-language info',
     'medications.back': '← Back',
     'medications.detailError': 'Could not load medicine details.',
@@ -209,6 +250,8 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'world.growthLead': '{n} trees growing here',
     'world.growthDays': '{n} days grown',
     'world.tapTreeHint': 'Tap a tree to see how it is growing',
+    'world.colorLegend': 'Each colour is a medicine',
+    'world.dragHint': 'Drag to turn your little planet',
     'world.canPressHint':
       'You can check in here today — or mark Taken on My list.',
     'world.pressCta': "I'm here today",
@@ -217,6 +260,18 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'world.pauseNote':
       'Missed days only pause growth time. Your tree never shrinks or wilts.',
     'world.close': 'Close',
+    'world.demo.label': 'Demo',
+    'world.demo.title': 'Fast-forward garden',
+    'world.demo.hint': 'Simulate growth days for the portfolio demo.',
+    'world.demo.daysMark': '{n} days',
+    'world.demo.apply': 'Add {n} days to every tree',
+    'world.demo.note':
+      'Real growth comes from daily Taken or “I’m here today” — this control is demo-only.',
+    'world.demo.reset': 'Reset garden',
+    'world.demo.resetConfirmTitle': 'Reset garden?',
+    'world.demo.resetConfirmMessage':
+      'All trees return to budding with 0 growth days. Species stay the same. Demo only.',
+    'world.demo.resetCancel': 'Cancel',
     'world.stage.budding': 'Stage: budding',
     'world.stage.small': 'Stage: small',
     'world.stage.large': 'Stage: large',
@@ -229,8 +284,10 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
   },
   zh: {
     'app.title': 'ThriveRx',
+    'app.subtitle': '易懂用药说明 · 随你一同成长的世界',
     'language.label': '语言',
-    'disclaimer.general': '仅供参考 — 请务必向医生或药剂师确认。',
+    'disclaimer.general':
+      '非医疗建议，仅供教育与演示用途 — 请务必向医生或药剂师确认。',
     'nav.search': '搜索',
     'nav.myList': '我的清单',
     'nav.world': '世界',
@@ -247,6 +304,19 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'medications.searchButton': '搜索',
     'medications.searchError': '搜索失败。请检查后端是否运行。',
     'medications.searchEmpty': '无匹配结果 — 请尝试其他名称。',
+    'scan.title': '扫描处方',
+    'scan.hint':
+      '拍摄澳大利亚打印处方或药盒 — 配置 API 密钥后会自动识别药名并匹配目录。不清时可手动输入。',
+    'scan.pickPhoto': '选择照片',
+    'scan.takePhoto': '拍照',
+    'scan.textHintLabel': '备用：照片不清时输入药名',
+    'scan.textHintPlaceholder': '例如 metformin、Diabex、Ventolin',
+    'scan.submit': '重新扫描',
+    'scan.scanning': '正在识别处方…',
+    'scan.error': '扫描失败。请检查网络后重试，或在下方输入药名。',
+    'scan.empty': '目录无匹配 — 换更清晰的照片，或输入通用名/品牌名。',
+    'scan.extracted': '从处方识别',
+    'scan.confidence': '{n}% 匹配 — 点按查看',
     'medications.tapForDetail': '点击查看通俗说明',
     'medications.back': '← 返回',
     'medications.detailError': '无法加载药物详情。',
@@ -320,12 +390,26 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'world.growthLead': '这里有 {n} 棵树在生长',
     'world.growthDays': '已生长 {n} 天',
     'world.tapTreeHint': '点按树木查看生长情况',
+    'world.colorLegend': '每种颜色代表一种药物',
+    'world.dragHint': '拖动旋转你的小星球',
     'world.canPressHint': '今天可以在此签到 — 或在「我的清单」标记已服用。',
     'world.pressCta': '我今天来了',
     'world.pressing': '生长中…',
     'world.alreadyPressed': '今天已成长 — 明天见。',
     'world.pauseNote': '错过的日子只会暂停生长时间。树木不会缩小或枯萎。',
     'world.close': '关闭',
+    'world.demo.label': '演示',
+    'world.demo.title': '快进花园',
+    'world.demo.hint': '为作品集演示模拟生长天数。',
+    'world.demo.daysMark': '{n} 天',
+    'world.demo.apply': '为每棵树增加 {n} 天',
+    'world.demo.note':
+      '真实生长来自每日「已服用」或「我今天来了」— 此控件仅用于演示。',
+    'world.demo.reset': '重置花园',
+    'world.demo.resetConfirmTitle': '重置花园？',
+    'world.demo.resetConfirmMessage':
+      '所有树木将回到萌芽、生长天数为 0。树种保持不变。仅用于演示。',
+    'world.demo.resetCancel': '取消',
     'world.stage.budding': '阶段：萌芽',
     'world.stage.small': '阶段：幼树',
     'world.stage.large': '阶段：大树',
@@ -338,9 +422,10 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
   },
   vi: {
     'app.title': 'ThriveRx',
+    'app.subtitle': 'Thông tin thuốc rõ ràng · thế giới lớn cùng bạn',
     'language.label': 'Ngôn ngữ',
     'disclaimer.general':
-      'Chỉ mang tính tham khảo — luôn xác nhận với bác sĩ hoặc dược sĩ.',
+      'Không phải lời khuyên y tế. Chỉ dùng cho mục đích giáo dục và demo — luôn xác nhận với bác sĩ hoặc dược sĩ.',
     'nav.search': 'Tìm kiếm',
     'nav.myList': 'Danh sách',
     'nav.world': 'Thế giới',
@@ -359,6 +444,21 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'medications.searchButton': 'Tìm',
     'medications.searchError': 'Tìm kiếm thất bại. Kiểm tra backend.',
     'medications.searchEmpty': 'Không có kết quả — thử tên khác.',
+    'scan.title': 'Quét đơn thuốc',
+    'scan.hint':
+      'Chụp đơn in kiểu Úc hoặc nhãn thuốc — có API key sẽ tự đọc tên thuốc rồi khớp danh mục. Có thể gõ thêm nếu ảnh mờ.',
+    'scan.pickPhoto': 'Chọn ảnh',
+    'scan.takePhoto': 'Chụp ảnh',
+    'scan.textHintLabel': 'Dự phòng: gõ tên nếu ảnh không rõ',
+    'scan.textHintPlaceholder': 'vd. metformin, Diabex, Ventolin',
+    'scan.submit': 'Quét lại',
+    'scan.scanning': 'Đang đọc đơn…',
+    'scan.error':
+      'Quét thất bại. Kiểm tra kết nối, thử lại, hoặc gõ tên thuốc bên dưới.',
+    'scan.empty':
+      'Không khớp danh mục — thử ảnh rõ hơn, hoặc gõ tên gốc/biệt dược.',
+    'scan.extracted': 'Đọc từ đơn',
+    'scan.confidence': '{n}% khớp — chạm để xem',
     'medications.tapForDetail': 'Chạm để xem thông tin dễ hiểu',
     'medications.back': '← Quay lại',
     'medications.detailError': 'Không tải được chi tiết thuốc.',
@@ -436,6 +536,8 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'world.growthLead': '{n} cây đang lớn ở đây',
     'world.growthDays': 'Đã lớn {n} ngày',
     'world.tapTreeHint': 'Chạm vào cây để xem sự phát triển',
+    'world.colorLegend': 'Mỗi màu là một loại thuốc',
+    'world.dragHint': 'Kéo để xoay hành tinh nhỏ',
     'world.canPressHint':
       'Bạn có thể điểm danh ở đây hôm nay — hoặc đánh dấu Đã uống ở Danh sách.',
     'world.pressCta': 'Tôi ở đây hôm nay',
@@ -444,6 +546,18 @@ const messages: Record<Locale, Record<MessageKey, string>> = {
     'world.pauseNote':
       'Ngày bỏ lỡ chỉ tạm dừng thời gian lớn. Cây không bao giờ teo hay héo.',
     'world.close': 'Đóng',
+    'world.demo.label': 'Demo',
+    'world.demo.title': 'Tua nhanh khu vườn',
+    'world.demo.hint': 'Mô phỏng ngày tăng trưởng cho bản demo portfolio.',
+    'world.demo.daysMark': '{n} ngày',
+    'world.demo.apply': 'Thêm {n} ngày cho mọi cây',
+    'world.demo.note':
+      'Tăng trưởng thật đến từ Đã uống hàng ngày hoặc “Tôi ở đây hôm nay” — điều khiển này chỉ dùng demo.',
+    'world.demo.reset': 'Đặt lại khu vườn',
+    'world.demo.resetConfirmTitle': 'Đặt lại khu vườn?',
+    'world.demo.resetConfirmMessage':
+      'Mọi cây trở về nảy mầm với 0 ngày tăng trưởng. Loài cây giữ nguyên. Chỉ dùng demo.',
+    'world.demo.resetCancel': 'Hủy',
     'world.stage.budding': 'Giai đoạn: nảy mầm',
     'world.stage.small': 'Giai đoạn: nhỏ',
     'world.stage.large': 'Giai đoạn: lớn',

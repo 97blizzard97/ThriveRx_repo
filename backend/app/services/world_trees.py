@@ -9,9 +9,36 @@ from sqlalchemy.orm import Session, joinedload
 
 from app.models import PatientMedication, Tree
 from app.schemas.common import GrowthStage
-from app.schemas.world import DailyPressResponse, TreeState, WorldSummary
+from app.schemas.world import (
+    DailyPressResponse,
+    DemoAdvanceResponse,
+    DemoResetResponse,
+    TreeState,
+    WorldSummary,
+)
 
 TREE_SPECIES = ("oak", "maple", "birch", "willow", "cedar")
+
+# PRD-ish demo mapping: days of engagement → growth stage.
+STAGE_SMALL_AT = 14
+STAGE_LARGE_AT = 60
+STAGE_MATURE_AT = 180
+
+
+def stage_for_growth_days(days: int) -> GrowthStage:
+    """Map accumulated growth days to stage (never shrinks conceptually)."""
+    if days < STAGE_SMALL_AT:
+        return GrowthStage.budding
+    if days < STAGE_LARGE_AT:
+        return GrowthStage.small
+    if days < STAGE_MATURE_AT:
+        return GrowthStage.large
+    return GrowthStage.mature
+
+
+def _apply_growth_days(tree: Tree, days: int) -> None:
+    tree.accumulated_growth_days = days
+    tree.growth_stage = stage_for_growth_days(days).value
 
 
 def _tree_to_state(tree: Tree) -> TreeState:
@@ -104,7 +131,41 @@ def record_daily_press(
         return DailyPressResponse(tree=_tree_to_state(tree), pressed=False)
 
     tree.last_press_date = today
-    tree.accumulated_growth_days += 1
+    _apply_growth_days(tree, tree.accumulated_growth_days + 1)
     db.commit()
     db.refresh(tree)
     return DailyPressResponse(tree=_tree_to_state(tree), pressed=True)
+
+
+def demo_advance_growth(
+    db: Session, user_id: UUID, days: int
+) -> DemoAdvanceResponse:
+    """Demo-only: add engagement days to every tree and refresh stages.
+
+    Does not set last_press_date — portfolio fast-forward only, no wilt/punish.
+    """
+    clamped = max(1, min(180, days))
+    trees = _trees_for_user(db, user_id)
+    for tree in trees:
+        _apply_growth_days(tree, tree.accumulated_growth_days + clamped)
+    db.commit()
+    for tree in trees:
+        db.refresh(tree)
+    return DemoAdvanceResponse(
+        world=get_world(db, user_id),
+        days_added=clamped,
+    )
+
+
+def demo_reset_growth(db: Session, user_id: UUID) -> DemoResetResponse:
+    """Demo-only: reset every tree to budding / 0 growth days.
+
+    Keeps species and tree rows; does not delete trees. Not clinical.
+    """
+    trees = _trees_for_user(db, user_id)
+    for tree in trees:
+        _apply_growth_days(tree, 0)
+    db.commit()
+    for tree in trees:
+        db.refresh(tree)
+    return DemoResetResponse(world=get_world(db, user_id))

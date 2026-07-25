@@ -8,6 +8,7 @@ import {
 } from '../components/AddMedicationSheet';
 import { MedicineDetailPanel } from '../components/MedicineDetailPanel';
 import { MedicineSearchSection } from '../components/MedicineSearchSection';
+import { ScriptScanSection } from '../components/ScriptScanSection';
 import { useAddMedication } from '../hooks/useAddMedication';
 import { useMedicineDetail } from '../hooks/useMedicineDetail';
 import { useMedicineSearch } from '../hooks/useMedicineSearch';
@@ -95,6 +96,10 @@ export function CatalogScreen({ locale }: CatalogScreenProps) {
         isSearching={isSearching}
         error={searchError}
         onSelect={setSelectedMedicineId}
+      />
+      <ScriptScanSection
+        locale={locale}
+        onSelectMatch={setSelectedMedicineId}
       />
     </ScrollView>
   );

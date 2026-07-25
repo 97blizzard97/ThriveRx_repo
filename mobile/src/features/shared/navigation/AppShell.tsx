@@ -5,6 +5,7 @@ import { CatalogScreen } from '../../medications/screens/CatalogScreen';
 import { MyMedicationsScreen } from '../../medications/screens/MyMedicationsScreen';
 import { WorldScreen } from '../../world/screens/WorldScreen';
 import { type Locale, t } from '../../../i18n';
+import { DisclaimerBanner } from '../components/DisclaimerBanner';
 
 export type AppTab = 'search' | 'myList' | 'world';
 
@@ -32,6 +33,7 @@ export function AppShell({ locale = 'en' }: AppShellProps) {
           />
         )}
       </View>
+      <DisclaimerBanner locale={locale} />
       <View style={styles.tabBar}>
         <TabButton
           label={t('nav.search', locale)}
@@ -76,12 +78,14 @@ function TabButton({ label, active, onPress }: TabButtonProps) {
 
 const styles = StyleSheet.create({
   root: {
+    backgroundColor: '#fff',
     flex: 1,
   },
   content: {
     flex: 1,
   },
   tabBar: {
+    backgroundColor: '#fff',
     borderTopColor: '#e2e8f0',
     borderTopWidth: StyleSheet.hairlineWidth,
     flexDirection: 'row',

@@ -16,16 +16,16 @@ export function DisclaimerBanner({ locale = 'en' }: DisclaimerBannerProps) {
 
 const styles = StyleSheet.create({
   banner: {
-    backgroundColor: '#f0f4f8',
-    borderBottomColor: '#c5d3e0',
-    borderBottomWidth: StyleSheet.hairlineWidth,
+    backgroundColor: '#f8fafc',
+    borderTopColor: '#e2e8f0',
+    borderTopWidth: StyleSheet.hairlineWidth,
     paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingVertical: 8,
   },
   text: {
-    color: '#334155',
-    fontSize: 13,
-    lineHeight: 18,
+    color: '#64748b',
+    fontSize: 11,
+    lineHeight: 15,
     textAlign: 'center',
   },
 });
